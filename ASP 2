@@ -1,0 +1,2375 @@
+<!--="(document.getElementById(""Ziparean"").value == """&B4&""")||"-->
+<%@LANGUAGE="VBSCRIPT"%>
+<!--#include file="Connections/con1.asp" -->
+<SCRIPT LANGUAGE=vbscript>
+<!--
+DIM ValidForm
+Sub ValidateEmployee
+	'If Document.form1.ppiloan.value <> "" then
+	
+	'-----Verifier code script------
+	If Document.form1.ppiloan.value <> "lead15" and Document.form1.ppiloan.value <> "sanam77" and Document.form1.ppiloan.value <> "lead85" Then
+	MsgBox "Enter the Proper Verifier Code"	
+	Else 
+		SET Add = document.form1
+	    ValidForm = True
+	End If
+    ' --------------------------------------
+    
+	'If Document.form1.ppiloan.value <> "" then
+	'SET Add = document.form1
+	'ValidForm = True
+	'Else 
+	'	MsgBox "Enter the Verifier Code"
+	'End If
+
+	
+	'call checkfield(add.Phone.value, "Please Enter the Customer's Phone No",50)
+	
+	'sdate = add.smonth(add.smonth.selectedindex).text & "/" & add.sday(add.sday.selectedindex).text & "/" & add.sYear(add.sYear.selectedindex).text
+	'Call CheckDate(sdate, "Please Select the Valid Sale Date")
+	IF ValidForm THEN
+		Add.submit
+	END IF
+END Sub
+
+Sub SubmitPhone
+	if document.form1.SrPhone.value <> "" then
+		document.form1.status.value = ""
+		document.form1.submit
+	else
+		msgbox "Enter the Phone No. to Find"
+	end if
+END Sub
+
+sub window_onload()
+	Shipto_onClick
+	Ship1_onClick
+	Ship2_onClick
+	Ship3_onClick
+	Ship4_onClick
+	Ship5_onClick
+end sub
+
+sub ProductAmt_onkeypress()
+	if not isnumeric(form1.ProductAmt.value & chr(window.event.keyCode)) then window.event.keyCode = 0
+end sub
+
+sub Shipping_onkeypress()
+	if not isnumeric(form1.Shipping.value & chr(window.event.keyCode)) then window.event.keyCode = 0
+end sub
+sub Tax_onkeypress()
+	if not isnumeric(form1.Tax.value & chr(window.event.keyCode)) then window.event.keyCode = 0
+end sub
+
+
+sub Shipto_onClick()
+	if form1.shipto.checked = true then 
+		ShowFrame(form1.all.DivShipto)
+	else
+		HideFrame(form1.all.DivShipto)
+	end if
+end sub
+
+sub Ship1_onClick()
+	if form1.ship1.checked = true then 
+		ShowFrame(form1.all.DivShip1)
+	else
+		HideFrame(form1.all.DivShip1)
+	end if
+end sub
+
+sub Ship2_onClick()
+	if form1.ship2.checked = true then 
+		ShowFrame(form1.all.DivShip2)
+	else
+		HideFrame(form1.all.DivShip2)
+	end if
+end sub
+
+sub Ship3_onClick()
+	if form1.ship3.checked = true then 
+		ShowFrame(form1.all.DivShip3)
+	else
+		HideFrame(form1.all.DivShip3)
+	end if
+end sub
+
+sub Ship4_onClick()
+	if form1.ship4.checked = true then 
+		ShowFrame(form1.all.DivShip4)
+	else
+		HideFrame(form1.all.DivShip4)
+	end if
+end sub
+
+sub Ship5_onClick()
+	if form1.ship5.checked = true then 
+		ShowFrame(form1.all.DivShip5)
+	else
+		HideFrame(form1.all.DivShip5)
+	end if
+end sub
+
+sub ShowFrame(FrameName)
+	framename.style.visibility = "visible"
+	framename.style.position = ""
+end sub
+
+sub HideFrame(FrameName)
+	FrameName.style.visibility = "hidden"
+	FrameName.style.position = "absolute"
+end sub
+
+//-->
+</SCRIPT>
+
+<SCRIPT LANGUAGE=javascript type="text/JavaScript">
+
+    var score1 = 0;
+    var score2 = 0;
+    var score3 = 0;
+    var score4 = 0;
+    var score5 = 0;
+    var score6 = 0;
+    var score7 = 0;
+    var score8 = 0;
+    
+    function psi1()
+	{
+		var x1 = document.all("PSI_Ptype").options[document.all("PSI_Ptype").selectedIndex].text;
+		var x2 = document.all("PSI_Bprop").options[document.all("PSI_Bprop").selectedIndex].text;
+		var x3 = document.all("PSI_Sprop").options[document.all("PSI_Sprop").selectedIndex].text;
+		var x4 = document.all("PSI_wprop").options[document.all("PSI_wprop").selectedIndex].text;
+		var x5 = document.all("PSI_cprop").options[document.all("PSI_cprop").selectedIndex].text;
+		var x6 = document.all("PSI_aprop").options[document.all("PSI_aprop").selectedIndex].text;
+		var x7 = document.all("PSI_iprop").options[document.all("PSI_iprop").selectedIndex].text;
+		var x8 = document.all("PSI_eprop").options[document.all("PSI_eprop").selectedIndex].text;
+		
+		if (x1 == "Flat") { score1 = 1;}
+		if (x1 == "Bungalow") { score1 = 2;}
+		if (x1 == "House") { score1 = 3; }
+		
+		if (x2 == "Detached") { score2 = 4;	}
+		if (x2 == "Semi detached") { score2 = 3; }
+		if (x2 == "End Terraced") { score2 = 2; }
+		if (x2 == "Terraced") { score2 = 1; }
+		
+		if (x3 == "2") { score3 = 2; }
+		if (x3 == "3") { score3 = 3; }
+		if (x3 == "4") { score3 = 4; }
+		if (x3 == "5+") { score3 = 5; }
+		
+		if (x4 == "Double glazed") { score4 = 1;	}
+		if (x4 == "Single glazed") { score4 = 3; }
+		if (x4 == "Mixture of both") { score4 = 2; }
+		
+		if (x5 == "Solid brick walls") { score5 = 2;	}
+		if (x5 == "cavity brick walls") { score5 = 1; }
+		
+		if (x6 == "<30years") { score6 = 1;	}
+		if (x6 == "30-50 years") { score6 = 2; }
+		if (x6 == "50-70 years") { score6 = 3; }
+		if (x6 == "70 years plus") { score6 = 4; }
+		
+		if (x7 == "Loft insulation in last 10 years") { score7 = 1;	}
+		if (x7 == "no loft insulation") { score7 = 3; }
+		if (x7 == "cavity wall insulation") { score7 = 1; }
+		
+		if (x8 == "Loft conversion") { score8 = 3;	}
+		if (x8 == "single story extension") { score8 = 3; }
+		if (x8 == "double story extension") { score8 = 4; }
+		
+		/*msg = score1 + " Question 1 Score\n";
+		msg = msg + score2 + " Question 2 Score\n";
+		msg = msg + score3 + " Question 3 Score\n";
+		msg = msg + score4 + " Question 4 Score\n";
+		msg = msg + score5 + " Question 5 Score\n";
+		msg = msg + score6 + " Question 6 Score\n";
+		msg = msg + score7 + " Question 7 Score\n";
+		msg = msg + score8 + " Question 8 Score\n";
+		
+		alert(msg);*/
+		
+		var tot1 = score1 + score2 + score3 + score4 + score5 + score6 + score7 + score8
+		document.form1.lead_score.value = tot1;
+	}
+	/*function ddr()
+	{
+		var x = document.all("Insutenyrs");
+		var y = x.options[x.selectedIndex].text;
+		if(y == "Yes")
+		{
+			document.form1.paymode[0].disabled = true;
+			alert("No more Loft Questions");
+		}
+		if(y == "No")
+		{
+			document.form1.paymode[0].disabled = false;
+		}
+	}*/
+	
+	function dds()
+	{
+		var x = document.all("InsuJoist");
+		var y = x.options[x.selectedIndex].text;
+		if(y == "Above")
+		{
+			document.form1.InsuLoftTen.disabled = true;
+			document.form1.InsuJoist.disabled = true;
+			document.form1.InsuLoftBoard.disabled = true;
+			document.form1.InsuLoftBoard1.disabled = true;
+			document.form1.InsuLoftEmp.disabled = true;
+			document.form1.InsuLoftEmp1.disabled = true;
+			document.form1.InsuWorkLoft.disabled = true;
+			document.form1.InsuLoftConv.disabled = true;
+			/*document.form1.paymode[1].checked = true;*/
+			alert("No more Loft Questions");
+		}
+	}
+
+
+	function ddsub()
+	{
+		var x = document.all("OwnProper");
+		var y = x.options[x.selectedIndex].text;
+		if(y == "No")		{
+			document.form1.Submitform.disabled = true;
+			alert("This is Invalid Record");
+		}
+		if(y == "Yes") 
+		{
+			document.form1.Submitform.disabled = false;
+			alert("This is Valid Lead Proceed");
+		}
+	}
+	function ddQsix()
+	{
+		var x = document.all("InsuCustAllow");
+		var y = x.options[x.selectedIndex].text;
+		if(y == "No")
+		{
+			document.form1.InsuBenefits.disabled = true;
+			document.form1.InsuBenefits2.disabled = true;
+			document.form1.InsuBenefits3.disabled = true;
+		}
+		if(y == "Yes")
+		{
+			document.form1.InsuBenefits.disabled = false;
+			document.form1.InsuBenefits2.disabled = false;
+			document.form1.InsuBenefits3.disabled = false;
+		}
+	}
+
+	
+	function ddQsix1()
+	{
+		var x = document.all("InsuBenefits");
+		var y = x.options[x.selectedIndex].text;
+		if(y == "Pension Credit")
+		{
+			document.form1.InsuBenefits2.disabled = true;
+			document.form1.InsuBenefits3.disabled = true;
+		}
+		if(y == "Child Tax Credit - Income Less Than £ 15,860")
+		{
+			document.form1.InsuBenefits2.disabled = true;
+			document.form1.InsuBenefits3.disabled = true;
+		}
+		
+		if(y == "Income-based job seeker's allowance")
+		{
+			document.form1.InsuBenefits3.disabled = true;
+			document.form1.InsuBenefits2.disabled = false;
+		}
+		
+		if(y == "Income related employment and support allowance")
+		{
+			document.form1.InsuBenefits3.disabled = true;
+			document.form1.InsuBenefits2.disabled = false;
+		}
+		
+		if(y == "Income support")
+		{
+			document.form1.InsuBenefits3.disabled = true;
+			document.form1.InsuBenefits2.disabled = false;
+		}
+
+		if(y == "Working tax credit with a relevant income below £15860")
+		{
+			document.form1.InsuBenefits2.disabled = true;
+			document.form1.InsuBenefits3.disabled = false;
+		}
+		
+		if(y == "Receive Universal Credit with monthly earned income of £ 1,250 or less in any one of the assessment periods in the previous 12 months")
+		{
+			document.form1.InsuBenefits2.disabled = true;
+			document.form1.InsuBenefits3.disabled = false;
+		}
+	}
+	function ddbuilt()
+	{
+		var x = document.all("InsuBuiltYear");
+		var y = x.options[x.selectedIndex].text;
+		if(y == "Yes")
+		{
+			
+			document.form1.InsuBuiltBefo.disabled = true;
+			document.form1.InsuHaveCavity.disabled = true;			
+			document.form1.InsuTimFra.disabled = true;
+			document.form1.InsuTileCla.disabled = true;
+			document.form1.InsuDampWall.disabled = true;			
+			alert("Dont ask cavity questions");
+		}
+	}
+	
+	function ddbefo()
+	{
+		var x = document.all("InsuBuiltBefo");
+		var y = x.options[x.selectedIndex].text;
+		if(y == "Yes")
+		{
+			document.form1.InsuHaveCavity.disabled = true;
+			document.form1.InsuTimFra.disabled = true;
+			document.form1.InsuTileCla.disabled = true;
+			document.form1.InsuDampWall.disabled = true;			
+			alert("Dont ask cavity questions");
+		}
+	}
+	function ddcav()
+	{
+		var x = document.all("InsuHaveCavity");
+		var y = x.options[x.selectedIndex].text;
+		if(y == "No")
+		{
+			document.form1.InsuTimFra.disabled = true;
+			document.form1.InsuTileCla.disabled = true;
+			document.form1.InsuDampWall.disabled = true;
+			alert("Dont ask cavity questions");
+		}
+	}
+	function ddfra()
+	{
+		var x = document.all("InsuTimFra");
+		var y = x.options[x.selectedIndex].text;
+		if(y == "Yes")
+		{
+			
+			document.form1.InsuTileCla.disabled = true;
+			document.form1.InsuDampWall.disabled = true;			
+			alert("Dont ask cavity questions");
+		}
+	}
+	function ddcla()
+	{
+		var x = document.all("InsuTileCla");
+		var y = x.options[x.selectedIndex].text;
+		if(y == "Yes")
+		{
+			
+			document.form1.InsuDampWall.disabled = true;			
+			alert("Dont ask cavity questions");
+		}
+	}
+	
+	function ddwall()
+	{
+		var x = document.all("InsuDampWall");
+		var y = x.options[x.selectedIndex].text;
+		if(y == "Yes")
+		{
+			alert("Dont ask cavity questions");
+		}
+	}
+	
+	
+	function valid()
+	{
+		if(document.form1.Shipto.checked==false &&	document.form1.Ship1.checked==false && document.form1.Ship3.checked == false && document.form1.Ship2.checked==false)
+			{
+			alert("Please Fill the Form Completely");
+			}
+		else if(document.form1.Shipto.checked==true)
+			{
+				var msg="";
+				if((document.getElementById("OwnProper").value =="")||(document.getElementById("Tenure").value == "")||(document.getElementById("InsuInterest").value =="")||(document.getElementById("InsuProp").value == "")||(document.getElementById("InsuPropBuilt").value =="")||(document.getElementById("InsuCustAllow").value == "")||(document.getElementById("Insucert").value =="")||(document.getElementById("stonew").value ==""))
+				{
+					if(document.getElementById("OwnProper").value == "")
+					
+					msg = msg + "1. Does the Customer Own the Property?\n";
+					
+					if(document.getElementById("Tenure").value == "")
+						
+					msg = msg + "2. Tenure\n";
+						
+					if(document.getElementById("InsuInterest").value == "")
+						
+					msg = msg + "3. What type of Insulation are you Interested In?\n";
+						
+					if(document.getElementById("InsuProp").value == "")
+						
+					msg = msg + "4. what type of Property?\n";
+						
+					if(document.getElementById("InsuPropBuilt").value == "")
+					
+					msg = msg + "5. When was the Property Built?\n";
+						
+					if(document.getElementById("InsuCustAllow").value == "")
+						
+					msg = msg + "6. Is the Customer on any Benefits Allowances Or Credits?\n";
+						
+					if(document.getElementById("Insucert").value == "")
+						
+					msg = msg + "9. CERT 70\n";
+						
+					if(document.getElementById("stonew").value == "")
+						
+					msg = msg + "12. Does your property have stone walls?\n";
+						
+				    alert(msg);
+				    return false;
+				}
+				else if(document.form1.Ship1.checked==true)
+				{
+					var msg="";
+						if((document.getElementById("InsuBuiltYear").value =="")||(document.getElementById("InsuBuiltBefo").value == "")||(document.getElementById("InsuHaveCavity").value =="")||(document.getElementById("InsuTimFra").value == "")||(document.getElementById("InsuTileCla").value =="")||(document.getElementById("InsuDampWall").value == ""))
+							{
+								if(document.getElementById("InsuBuiltYear").value == "")
+								
+								msg = msg + "Please Select Property Built Year After 1985\n";
+								
+								if(document.getElementById("InsuBuiltBefo").value == "")
+									
+								msg = msg + "Please Select Property Built Year Before 1900\n";
+									
+								if(document.getElementById("InsuHaveCavity").value == "")
+									
+								msg = msg + "Please Select Cavity wall present or not\n";
+									
+								if(document.getElementById("InsuTimFra").value == "")
+									
+								msg = msg + "Please Select Property Structure Timber Frame / Steel\n";
+									
+								if(document.getElementById("InsuTileCla").value == "")
+								
+								msg = msg + "Please Select Property ties details\n";
+									
+								if(document.getElementById("InsuDampWall").value == "")
+									
+								msg = msg + "Please Select Property damp wall details\n";
+											
+							    alert(msg);
+							    return false;
+							}
+							else
+							{
+								document.form1.submit();
+							}
+				}
+				else if(form1.Ship3.checked == true)
+				{
+					var msg="";
+					if((document.getElementById("InsuLoftTen").value == "")||(document.getElementById("InsuLoftBoard").value == "")||(document.getElementById("InsuLoftEmp").value == "")||(document.getElementById("InsuWorkLoft").value == "")||(document.getElementById("InsuLoftConv").value == ""))
+					{
+						if(document.getElementById("InsuLoftTen").value == "")
+							
+						msg=msg+"Please Select the Question number 16.\n";
+							
+						if(document.getElementById("InsuLoftBoard").value == "")
+							
+						msg=msg+"Please Select the Question number 18.\n";
+				
+						if(document.getElementById("InsuLoftEmp").value == "")
+							
+						msg=msg+"Please Select the Question number 19.\n";
+							
+						if(document.getElementById("InsuWorkLoft").value == "")
+							
+						msg=msg+"Please Select the Question number 20.\n";
+							
+						if(document.getElementById("InsuLoftConv").value == "")
+							
+						msg=msg+"Please Select the Question number 21.\n";
+							
+						alert(msg);
+						return false;												     
+					}
+					else
+					{
+						document.form1.submit();
+					}
+				}
+				else
+				{
+					document.form1.submit();
+				}
+			}
+			else if(document.form1.Ship1.checked==true)
+			{
+				var msg="";
+				if((document.getElementById("InsuBuiltYear").value =="")||(document.getElementById("InsuBuiltBefo").value == "")||(document.getElementById("InsuHaveCavity").value =="")||(document.getElementById("InsuTimFra").value == "")||(document.getElementById("InsuTileCla").value =="")||(document.getElementById("InsuDampWall").value == ""))
+				{
+					if(document.getElementById("InsuBuiltYear").value == "")
+					
+					msg = msg + "Please Select Question number 23.\n";
+					
+					if(document.getElementById("InsuBuiltBefo").value == "")
+						
+					msg = msg + "Please Select Question number 24.\n";
+						
+					if(document.getElementById("InsuHaveCavity").value == "")
+						
+					msg = msg + "Please Select Question number 25.\n";
+						
+					if(document.getElementById("InsuTimFra").value == "")
+						
+					msg = msg + "Please Select Question number 26.\n";
+						
+					if(document.getElementById("InsuTileCla").value == "")
+					
+					msg = msg + "Please Select Question number 27.\n";
+						
+					if(document.getElementById("InsuDampWall").value == "")
+						
+					msg = msg + "Please Select Question number 28.\n";
+								
+				    alert(msg);
+				    return false;
+				}
+				else
+				{
+					document.form1.submit();
+				}
+			}
+			else if(form1.Ship3.checked == true)
+			{
+				var msg="";
+				if((document.getElementById("InsuLoftTen").value == "")||(document.getElementById("InsuLoftBoard").value == "")||(document.getElementById("InsuLoftEmp").value == "")||(document.getElementById("InsuWorkLoft").value == "")||(document.getElementById("InsuLoftConv").value == ""))
+				{
+				if(document.getElementById("InsuLoftTen").value == "")
+					
+				msg=msg+"Please Select Question number 16.\n";
+					
+				if(document.getElementById("InsuLoftBoard").value == "")
+					
+				msg=msg+"Please Select Question number 18.\n";
+				
+				if(document.getElementById("InsuLoftEmp").value == "")
+					
+				msg=msg+"Please Select Question number 19.\n";
+					
+				if(document.getElementById("InsuWorkLoft").value == "")
+					
+				msg=msg+"Please Select Question number 20.\n";
+					
+				if(document.getElementById("InsuLoftConv").value == "")
+					
+				msg=msg+"Please Select Question number 21.\n";
+					
+				alert(msg);
+				return false;												     
+				}
+				else
+				{
+					document.form1.submit();
+				}
+			}
+			
+			else if(form1.Ship2.checked == true)
+			{
+				var msg="";
+				if((document.getElementById("InsuBedRoom").value == "")||(document.getElementById("InsuPrice").value == "")||(document.getElementById("InsuPInterest").value == ""))
+				{
+				if(document.getElementById("InsuBedRoom").value == "")
+					
+				msg=msg+"How Many Bedrooms are there in the Property?\n";
+					
+				if(document.getElementById("InsuPrice").value == "")
+					
+				msg=msg+"Price Quoted?\n";
+				
+				if(document.getElementById("InsuPInterest").value == "")
+					
+				msg=msg+"Would you be interested to have the property insulted\n";					
+				
+					
+				alert(msg);
+				return false;												     
+				}
+				else
+				{
+					document.form1.submit();
+				}
+			}
+			
+			else
+			{
+				document.form1.submit();
+			}
+	}
+
+
+</SCRIPT>
+
+
+<%if session("agentid") = "" then
+	Response.Redirect("logout.asp")
+end if
+mess = Request.querystring("mess")
+actype = Request.querystring("type")
+CustId = trim(Request.querystring("CustId"))
+if Request.Form("status")="" then
+	agentid = session("agentid")
+	set r1 = Server.CreateObject("ADODB.Recordset")
+	r1.Open "select * from dialer_agent where agent_uid = '"& agentid &"'",con,adOpenDynamic
+	if not r1.eof then
+		name = r1("agent_uid")
+	end if
+	r1.Close
+
+	if CustId <> "" then
+		set rs = Server.CreateObject("ADODB.Recordset")
+		rs.Open "select * from Insu where CustId='"& CustId &"'",con,2,2
+		if not rs.EOF then			
+			Title = rs("Title")
+			Fname = rs("FName")
+			Mname = rs("MName")
+			Lname = rs("LName")
+			Address1 = rs("Address1")
+			Address2 = rs("Address2")
+			Address3 = rs("Address3")
+			City = rs("City")
+			State = rs("State")
+			Zip = rs("Zip")		
+			ZipArea = rs("ZipArea")		
+			ZipAreaN = rs("ZipAreaN")		
+			LeadID = rs("LeadID")
+			SupplierBatchNo = rs("SupplierBatchNo")	
+			BT_YoN = rs("BT_YoN")
+			hPhone = rs("hPhone")
+			AhPhone = rs("AhPhone")	
+			mobile = rs("mobile")			
+			CusEmail = rs("CusEmail")						
+			CavityWalls = rs("CavityWalls")
+			'Insutenyrs = rs("Insutenyrs")
+			InsuJoist = rs("InsuJoist")
+			
+			sday = day(rs("made_at"))
+			smon = month(rs("made_at"))
+			syear = year(rs("made_at"))
+			EstTime = rs("EstTime")
+			
+			if rs("shipto") = true then
+				shipto = true
+				OwnProper = rs("OwnProper")
+				Tenure = rs("Tenure")
+				InsuInterest = rs("InsuInterest")
+				InsuProp = rs("InsuProp")
+				InsuPropBuilt = rs("InsuPropBuilt")
+				InsuCustAllow = rs("InsuCustAllow")
+				InsuBenefits = rs("InsuBenefits")
+				InsuBenefits2 = rs("InsuBenefits2")
+				InsuBenefits3 = rs("InsuBenefits3")
+				'InsuHomeIncome = rs("InsuHomeIncome")
+				Insucert = rs("Insucert")
+				InsuAgeProof = rs("InsuAgeProof")
+				cust_dob = rs("cust_dob")
+				InsuUtilBill = rs("InsuUtilBill")
+				stonew = rs("stonew")
+				CDigNews1 = rs("CDigNews1")
+				CDigNews2 = rs("CDigNews2")
+				CDigNews3 = rs("CDigNews3")
+				CDigNews4 = rs("CDigNews4")
+				CDigNews5 = rs("CDigNews5")
+				boiler_Type = rs("boiler_Type")
+				boiler_life = rs("boiler_life")
+				boiler_replace = rs("boiler_replace")
+				InsuGas = rs("InsuGas")
+				InsuUtilProv = rs("InsuUtilProv")
+				InsuUtilProvOth = rs("InsuUtilProvOth")
+				InsuElecSub = rs("InsuElecSub")
+				InsuElecSub1 = rs("InsuElecSub1")
+				InsuElecSubOth = rs("InsuElecSubOth")
+				Boiler_make_model = rs("Boiler_make_model")
+				boiler_breakdown_policy = rs("boiler_breakdown_policy")
+				B_emp_unemp = rs("B_emp_unemp")
+				Boiler_fault = rs("Boiler_fault")
+			end if
+			'paymode = rs("paymode")
+			if rs("ship3") = true then
+				InsuLoftTen = rs("InsuLoftTen")
+				InsuDeep = rs("InsuDeep")
+				InsuLoftBoard = rs("InsuLoftBoard")
+				InsuLoftBoard1 = rs("InsuLoftBoard1")
+				InsuLoftEmp = rs("InsuLoftEmp")
+				InsuLoftEmp1 = rs("InsuLoftEmp1")
+				InsuWorkLoft = rs("InsuWorkLoft")
+				InsuLoftConv = rs("InsuLoftConv")
+				'InsuRInfo = rs("InsuRInfo")
+			end if
+			
+			if rs("ship1") = true then
+				ship1 = true
+				Cavity_problem = rs("Cavity_problem")
+				InsuBuiltYear = rs("InsuBuiltYear")
+				InsuBuiltBefo = rs("InsuBuiltBefo")
+				InsuHaveCavity = rs("InsuHaveCavity")
+				InsuTimFra = rs("InsuTimFra")
+				InsuTileCla = rs("InsuTileCla")
+				InsuDampWall = rs("InsuDampWall")
+			end if
+			
+			if rs("ship2") = true then
+				ship2 = true
+				''CProducts1 = rs("CProducts1")
+				''CProducts2 = rs("CProducts2")
+				InsuBedRoom = rs("InsuBedRoom")
+				''InsuBedRoom1 = rs("InsuBedRoom1")
+				InsuPrice = rs("InsuPrice")
+				InsuPInterest = rs("InsuPInterest")
+				'InsuShower = rs("InsuShower")
+				InsuPwd = rs("InsuPwd")
+				InsuBTCall = rs("InsuBTCall")
+				InsuBTCall1 = rs("InsuBTCall1")
+				cday2 = day(rs("Demo2"))
+				cmon2 = month(rs("Demo2"))
+				cyear2 = year(rs("Demo2"))
+				CTime2 = rs("CTime2")
+			end if
+			disposition = rs("disposition")
+			ppiloan = rs("ppiloan")
+			Location = rs("Location")
+			epc = rs("epc")
+			epc_r = rs("epc_r")
+			Threshold = rs("Threshold")
+			Verified = rs("Verified")
+			madeby = rs("made_by")
+			remarks = rs("remarks")
+			'SpeciTime = rs("SpeciTime")
+			Qremarks = rs("Qremarks")						
+			Pending= rs("Pending")
+		end if
+		rs.close
+	else
+		if Request.Form("SrPhone") <> "" then
+		set rs = Server.CreateObject("ADODB.Recordset")
+			rs.Open "select * from Insu where hphone <> '' and hphone='"& Request.Form("SrPhone") &"'",con,2,2
+			if not rs.EOF then
+				'SaleRec = True
+				Title = rs("Title")
+			Fname = rs("FName")
+			Mname = rs("MName")
+			Lname = rs("LName")
+			Address1 = rs("Address1")
+			Address2 = rs("Address2")
+			Address3 = rs("Address3")
+			City = rs("City")
+			State = rs("State")
+			Zip = rs("Zip")			
+			ZipArea = rs("ZipArea")	
+			ZipAreaN = rs("ZipAreaN")	
+			LeadID = rs("LeadID")
+			SupplierBatchNo = rs("SupplierBatchNo")	
+			hPhone = rs("hPhone")
+			AhPhone = rs("AhPhone")	
+			mobile = rs("mobile")		
+			CusEmail = rs("CusEmail")									
+			CavityWalls = rs("CavityWalls")
+			'Insutenyrs = rs("Insutenyrs")
+			InsuJoist = rs("InsuJoist")
+			
+			sday = day(rs("made_at"))
+			smon = month(rs("made_at"))
+			syear = year(rs("made_at"))
+			EstTime = rs("EstTime")
+			'EstTime = hour(rs("EstTime")) & ":" & minute(rs("EstTime"))
+			'right("00" & hour(now)+5,2) & ":" & right("00" & minute(now)+15,2)
+			
+			if rs("shipto") = true then
+				shipto = true
+				OwnProper = rs("OwnProper")
+				Tenure = rs("Tenure")
+				InsuInterest = rs("InsuInterest")
+				InsuProp = rs("InsuProp")
+				InsuPropBuilt = rs("InsuPropBuilt")
+				InsuCustAllow = rs("InsuCustAllow")
+				InsuBenefits = rs("InsuBenefits")
+				InsuBenefits2 = rs("InsuBenefits2")
+				InsuBenefits3 = rs("InsuBenefits3")
+				'InsuHomeIncome = rs("InsuHomeIncome")
+				Insucert = rs("Insucert")
+				InsuAgeProof = rs("InsuAgeProof")
+				cust_dob = rs("cust_dob")
+				InsuUtilBill = rs("InsuUtilBill")
+				stonew = rs("stonew")
+				CDigNews1 = rs("CDigNews1")
+				CDigNews2 = rs("CDigNews2")
+				CDigNews3 = rs("CDigNews3")
+				CDigNews4 = rs("CDigNews4")
+				CDigNews5 = rs("CDigNews5")
+				boiler_Type = rs("boiler_Type")
+				boiler_life = rs("boiler_life")
+				boiler_replace = rs("boiler_replace")
+				InsuGas = rs("InsuGas")
+				InsuUtilProv = rs("InsuUtilProv")
+				InsuUtilProvOth = rs("InsuUtilProvOth")
+				InsuElecSub = rs("InsuElecSub")
+				InsuElecSub1 = rs("InsuElecSub1")
+				InsuElecSubOth = rs("InsuElecSubOth")
+				Boiler_make_model = rs("Boiler_make_model")
+				boiler_breakdown_policy = rs("boiler_breakdown_policy")
+				B_emp_unemp = rs("B_emp_unemp")
+				Boiler_fault = rs("Boiler_fault")
+			end if
+			'paymode = rs("paymode")
+			if rs("ship3") = true then
+				InsuLoftTen = rs("InsuLoftTen")
+				InsuDeep = rs("InsuDeep")
+				InsuLoftBoard = rs("InsuLoftBoard")
+				InsuLoftBoard1 = rs("InsuLoftBoard1")
+				InsuLoftEmp = rs("InsuLoftEmp")
+				InsuLoftEmp1 = rs("InsuLoftEmp1")
+				InsuWorkLoft = rs("InsuWorkLoft")
+				InsuLoftConv = rs("InsuLoftConv")
+				'InsuRInfo = rs("InsuRInfo")
+			end if
+			
+			if rs("ship1") = true then
+				ship1 = true
+				Cavity_problem = rs("Cavity_problem")
+				InsuBuiltYear = rs("InsuBuiltYear")
+				InsuBuiltBefo = rs("InsuBuiltBefo")
+				InsuHaveCavity = rs("InsuHaveCavity")
+				InsuTimFra = rs("InsuTimFra")
+				InsuTileCla = rs("InsuTileCla")
+				InsuDampWall = rs("InsuDampWall")
+			end if
+			
+			if rs("ship2") = true then
+				ship2 = true
+				''CProducts1 = rs("CProducts1")
+				''CProducts2 = rs("CProducts2")
+				InsuBedRoom = rs("InsuBedRoom")
+				''InsuBedRoom1 = rs("InsuBedRoom1")
+				InsuPrice = rs("InsuPrice")
+				InsuPInterest = rs("InsuPInterest")
+				'InsuShower = rs("InsuShower")
+				InsuPwd = rs("InsuPwd")
+				InsuBTCall = rs("InsuBTCall")
+				InsuBTCall1 = rs("InsuBTCall1")
+				cday2 = day(rs("Demo2"))
+				cmon2 = month(rs("Demo2"))
+				cyear2 = year(rs("Demo2"))
+				CTime2 = rs("CTime2")
+			end if
+			
+			disposition = rs("disposition")
+			ppiloan = rs("ppiloan")
+			Location = rs("Location")
+			epc = rs("epc")
+			epc_r = rs("epc_r")
+			Threshold = rs("Threshold")
+			Verified = rs("Verified")
+			madeby = rs("made_by")
+			remarks = rs("remarks")
+			'SpeciTime = rs("SpeciTime")
+			Qremarks = rs("Qremarks")						
+			Pending= rs("Pending")
+				
+			else
+				SaleRec = False
+			end if
+			rs.close
+			set rs = Server.CreateObject("ADODB.Recordset")
+			rs.Open "select * from dhans..Insulation_data where cust_offtelno1='"& trim(Request.Form("SrPhone")) &"'",con,2,2
+			if not rs.EOF Then%>
+				<TABLE align=center cellPadding=0 cellSpacing=0 border=1 bordercolor="White" width="90%" style="COLOR: Black; FONT-FAMILY: Georgia; FONT-SIZE: 12pt" ID="clsTable">
+					<TR bgcolor=Black height=25>
+						<TH width="30%"><FONT color=Orange size=2>Area</FONT></TH>	
+						<TH width="40%"><FONT color=Orange size=2>Campaign</FONT></TH>		
+						<TH width="30%"><FONT color=Orange size=2>Lead Type</FONT></TH>
+			  	   </TR>
+				<%set rst = Server.CreateObject("ADODB.Recordset")
+			    rst.Open "select * from Insu_Campaign_Postcodes where Active='Yes' and Ziparea='"& trim(rs("Custom8")) &"'",con,adOpenDynamic
+				if not rst.EOF Then
+				i = 1
+				do while not rst.eof%>
+				
+				  <TR bgColor=Orange height=25>
+					<TD width="30%" align=middle><FONT color=Black size=2><%=rst("Ziparea")%></FONT></TD>	
+					<TD width="40%" align=middle><FONT color=Black size=2><%=rst("Campaign")%></FONT></TD>	
+					<TD width="30%" align=middle><FONT color=Black size=2><%=rst("Lead_type")%></FONT></TD>
+				 </TR>
+				<%i = i + 1
+				rst.movenext
+				loop
+				end if
+				
+				set rstn = Server.CreateObject("ADODB.Recordset")
+			    rstn.Open "select * from Insu_Campaign_Postcodes where Active='Yes' and Ziparean='"& trim(rs("Custom9")) &"'",con,adOpenDynamic
+				if not rstn.EOF Then
+				i = 1
+				do while not rstn.eof%>
+				
+				  <TR bgColor=Orange height=25>
+					<TD width="30%" align=middle><FONT color=Black size=2><%=rstn("Ziparean")%></FONT></TD>	
+					<TD width="40%" align=middle><FONT color=Black size=2><%=rstn("Campaign")%></FONT></TD>	
+					<TD width="30%" align=middle><FONT color=Black size=2><%=rstn("Lead_type")%></FONT></TD>
+				 </TR>
+				<%i = i + 1
+				rstn.movenext
+				loop
+				end If
+				
+				set rswg1 = Server.CreateObject("ADODB.Recordset")
+			    rswg1.Open "select * from jerrydnc where cust_offtelno1='"& trim(rs("cust_offtelno1")) &"'",con,adOpenDynamic
+				if not rswg1.EOF Then
+				i = 1
+				do while not rswg1.eof%>
+				
+				  <TR bgColor=yellow height=25>
+				    <P align=center><strong><FONT face="serif" color="red"  size=4 align="center"> This Number in UK TPS List Please cut the call </FONT></strong></P>
+				 </TR>
+				<%i = i + 1
+				rswg1.movenext
+				loop
+				end if 
+				
+				set rswg2 = Server.CreateObject("ADODB.Recordset")
+			    rswg2.Open "select * from WG2016 where Active='Yes' and cust_city1='"& trim(rs("cust_City1")) &"'",con,adOpenDynamic
+				if not rswg2.EOF Then
+				i = 1
+				do while not rswg2.eof%>
+				
+				  <TR bgColor=Orange height=25>
+					<TD width="30%" align=middle><FONT color=Black size=2><%=rswg2("cust_city1")%></FONT></TD>	
+					<TD width="40%" align=middle><FONT color=Black size=2>WarmGen 2016</FONT></TD>	
+					<TD width="30%" align=middle><FONT color=Black size=2>Free Loft/Cavity</FONT></TD>
+				 </TR>
+				<%i = i + 1
+				rswg2.movenext
+				loop
+				end if
+				
+				set rsp = Server.CreateObject("ADODB.Recordset")
+			        rsp.Open "select disposition,hphone,made_at from insuqc where hphone='"& trim(Request.Form("SrPhone")) &"' order by made_at desc",con,adOpenDynamic
+				if not rsp.EOF Then
+				i = 1
+				do while not rsp.eof%>
+				
+				  <TR bgColor=white height=25>
+					<TD width="30%" align=middle><FONT color=Black size=2><b><%=rsp("disposition")%></b></FONT></TD>	
+					<TD width="40%" align=middle><FONT color=Black size=2><b><%=rsp("hphone")%></b></FONT></TD>	
+					<TD width="30%" align=middle><FONT color=Black size=2><b><%=rsp("made_at")%></b></FONT></TD>
+				 </TR>
+				<%i = i + 1
+				rsp.movenext
+				loop
+				end if
+				
+				set rstnc = Server.CreateObject("ADODB.Recordset")
+			    rstnc.Open "select * from CSCO where Zip='"& trim(rs("cust_City1")) &"'",con,adOpenDynamic
+				if not rstnc.EOF Then
+				i = 1
+				do while not rstnc.eof%>
+				
+				  <TR bgColor=Black height=25>
+					<TD width="30%" align=middle><FONT color=white size=2><%=rstnc("Zip")%></FONT></TD>	
+					<TD width="40%" align=middle><FONT color=white size=2></FONT></TD>	
+					<TD width="30%" align=middle><FONT color=white size=2>CSCO Area</FONT></TD>
+				 </TR>
+				<%i = i + 1
+				rstnc.movenext
+				loop%>
+				</Table>
+				
+				<%end if
+				rst.close
+				rstn.close
+				rstnc.close
+				rswg1.close
+				rswg2.close
+				rsp.close
+				Fname = trim(rs("cust_FName"))
+				Mname = trim(rs("cust_MidName"))
+				Lname = trim(rs("cust_LName"))
+				title = trim(rs("cust_title"))
+				Address1 = trim(rs("cust_ResidenceAdd"))
+				Address2 = trim(rs("cust_Address1"))
+				Address3 = trim(rs("cust_Address2"))
+				City = trim(rs("cust_ResPincode"))
+				State = trim(rs("cust_Orgpincode"))
+				Zip = trim(rs("cust_City1"))
+				ZipArea = trim(rs("Custom8"))
+				ZipAreaN = trim(rs("Custom9"))
+				hPhone = trim(rs("cust_offtelno1"))				
+				AhPhone = trim(rs("cust_offtelno2"))				
+				mobile = trim(rs("Cust_ResTelno2"))				
+				remarks = trim(rs("cust_remarks"))
+				'LeadID = trim(rs("custom13"))
+				'SupplierBatchNo = trim(rs("custom12"))	
+				
+			end if
+			rs.close
+		end if
+
+		Sday = day(date() + time)
+		Smon = month(date + time)
+		Syear = year(date + time)
+		
+		hr = left(hour(now),2)
+		min = left(minute(now),2)
+		
+		hru = 4
+		'hru = 3 (oct month) hru = 4 Mar month
+		hr1 = hr + hru
+		
+		esttime = right("00" & hr1,2) & ":" & right("00" & min,2)
+
+
+	end if
+%>
+<HTML><HEAD><TITLE>24-7 Lead Solutions</TITLE>
+</HEAD>
+
+<link rel="stylesheet" href="button.css" type="text/css">
+<link rel="stylesheet" href="nssa.css" type="text/css">
+<BODY background="" bgProperties=fixed topmargin=0 bgcolor=ffffff>
+
+<TABLE align=center cellPadding=0 cellSpacing=0 border=0 width="100%">
+<TR bgColor=orange>
+<TD class=titlebar height=25 vAlign=center width="80%"><FONT color=greenyellow>&nbsp;&nbsp;</FONT><FONTCOLOR=LIGHTBLUE><STRONG><FONT face="Century Gothic" size=4><%=name%></FONT></STRONG></FONT></TD>
+<TD align=right bgColor=orange class=txt-gray vAlign=center><B>
+<SCRIPT language=JavaScript>
+	var d=new Date();
+	var c=new String(d);
+	var a=c.substring(c.length-4,c.length);
+	var b=c.substring(0,10);document.write(b+",  "+ a);
+</SCRIPT>
+&nbsp;&nbsp;</B></TD>
+</TR>
+</TABLE>
+
+<P align=center><strong><FONT face="serif" color="#000000"  size=5 align="center"> Insulation </FONT></strong></P>
+
+
+<P align=left><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT face="serif" color="#7799aa"  size=3 align="left"> <A href="Boiler Opt.jpg" style="color:red">Boiler Finance Options</a> </FONT> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<FONT face="serif" color="#7799aa"  size=3 align="left"> <A href="Elec Sup.jpg" style="color:blue">Electricity Suppliers supporting Green Deal Finance</a> </FONT></strong></P>
+
+<A href="Grovern.jpg" style="color:red">Criteria : Grovern Ltd </a> <A href="CDM.jpg" style="color:green">CDM Energy Criteria</a>
+<A href="GDF.jpg" style="color:red">Green Deal Factory</a> <A href="GDF HHCRO.jpg" style="color:green">GDF HHCRO</a> 
+<A href="GRS.jpg" style="color:red">Gas Renewable Services</a> <A href="snowdown.jpg" style="color:green">Snow Down</a> 
+<A href="VHS.jpg" style="color:red">VHS Boiler</a> <A href="thermabead.jpg" style="color:green">ThermaBead / </a><A href="Thermabead Extract brochure.pdf" style="color:blue">Doc1/</a><A href="Thermabead Therm Extract.pdf" style="color:blue">Doc2</a>
+<A href="Haigh.jpg" style="color:red">Haigh Energy</a> <A href="tempo.jpg" style="color:green">GLS Tempo </a> <A href="clubmoor.jpg" style="color:red"> Clubmoor </a> <A href="ukgas.jpg" style="color:green"> UK Gas </a><A href="Network Energy.jpg" style="color:red"> Network Energy </a>
+
+<form method="post" action="InsulationHHCRO_june2016.asp" name="form1" onKeyUp="javascript:highlight(event)" onClick="javascript:highlight(event)">
+<input type="hidden" name="CustId" value="<%=CustId%>">
+<input type="hidden" name="actype" value="<%=actype%>">
+<br>
+
+<TABLE align=center cellPadding=0 cellSpacing=0 border=1 bordercolor="Black" width="90%" style="COLOR: Black; FONT-FAMILY: Georgia; FONT-SIZE: 12pt" ID="clsTable">
+<%if Request.Form("SrPhone") = "" and custid = "" then%>
+<TR valign=top height=50 valign=middle>
+	<TD width=100% colspan=2  valign=center>&nbsp;&nbsp;&nbsp;
+		Enter the Phone No. to Search 
+		&nbsp;&nbsp;<INPUT maxLength=20 name=SrPhone style="HEIGHT: 20px; TEXT-TRANSFORM: uppercase; WIDTH: 150px" class="IB">
+		&nbsp;&nbsp;&nbsp;&nbsp;
+	    <input type="button" name="SearchPhone" value="Find" onclick="vbscript:SubmitPhone" class="butn">
+	</TD>
+</TR>
+<%end if%>
+
+<%set rs = Server.CreateObject("ADODB.Recordset")
+rs.Open "select * from Insu where hphone='"& SrPhone &"' and hphone <> ''",con,2,2
+if not rs.EOF  then%>
+<TR valign=top>
+	<TD width=100% colspan=2  valign=center align=center>
+		<font size=2 color=red>This is a Sale Record (<%=rs("hphone")%>)  made on <b><%=formatdatetime(rs("made_at"),2)%></b> by <b><i><%=ucase(rs("made_by"))%></i></b></font>
+	</TD>
+</TR>
+<%end if
+rs.close%>
+
+
+<TR valign=top bgcolor=Black>
+	<TD width=50% >&nbsp;&nbsp;&nbsp;<font  face=bangle color=Orange>Customer Details</font></TD>
+	<TD width=50% align=right>&nbsp;&nbsp;&nbsp;<font face=bangle color=Orange>
+		<%if actype="" then Response.Write("Addition")
+		if actype="MOD" then Response.Write("Updation")
+		if actype="QC" then Response.Write("Quality Check")
+		if actype="DEL" then Response.Write("Deletion")%>&nbsp;&nbsp;&nbsp;
+	</font></TD>
+</TR>
+  <TR valign=top><TD colspan=2 width=44%>
+	<TABLE align=center cellPadding=0 cellSpacing=0 width="95%" border=0 background="" style="COLOR: Black; COLOR: BLACK; FONT-FAMILY: Georgia; FONT-SIZE: 10pt" ID="clsTable">
+	
+	  <TR height=50 valign=center>
+		<TD width="30%" align=Right>Name : </TD>
+		<TD width="70%" align=left>&nbsp;
+		<SELECT name=Title class="IB">
+			<option <%if Title="" then Response.Write("selected")%>></option>
+			<option <%if Title="Mr" then Response.Write("selected")%>>Mr</option>
+			<option <%if Title="Mrs" then Response.Write("selected")%>>Mrs</option>
+			<option <%if Title="Ms" then Response.Write("selected")%>>Ms</option>
+			<option <%if Title="Miss" then Response.Write("selected")%>>Miss</option>
+			<option <%if Title="Dr" then Response.Write("selected")%>>Dr</option>
+			<option <%if Title="Sir" then Response.Write("selected")%>>Sir</option>
+			<option <%if Title="Prof" then Response.Write("selected")%>>Prof</option>
+			<option <%if Title="Rev" then Response.Write("selected")%>>Rev</option>
+		</SELECT>			
+		&nbsp;<INPUT maxLength=50 name=Fname style="HEIGHT: 22px;TEXT-TRANSFORM: uppercase; WIDTH: 160px" value="<%=Fname%>" class="IB">
+		&nbsp;<INPUT maxLength=50  name=Mname style="HEIGHT: 22px;TEXT-TRANSFORM: uppercase; WIDTH: 50px" value="<%=Mname%>" class="IB">		
+		&nbsp;<INPUT maxLength=50  name=Lname style="HEIGHT: 22px;TEXT-TRANSFORM: uppercase; WIDTH: 155px" value="<%=Lname%>" class="IB">
+		</TD>
+	  </TR>
+	  <TR height=30 valign=center>
+		<TD width="30%" align=Right>Phone # : </TD>
+		<TD width="70%" align=left>&nbsp;&nbsp;<INPUT maxLength=20 readonly=true name=hPhone style="HEIGHT: 22px; TEXT-TRANSFORM: uppercase; WIDTH: 110px" value="<%=hPhone%>" class="IB"></TD>
+	  </TR>
+	  
+	  <!--<TR height=50 valign=center>
+		<TD width="30%" align=Right><b>1</b>.Who is your landline Provider?</TD>
+		<TD width="70%" align=left>&nbsp;
+		<SELECT name=BT_YoN class="IB">
+			<option <%if BT_YoN="" then Response.Write("selected")%>></option>
+			<option <%if BT_YoN="BT" then Response.Write("selected")%>>BT</option>
+		</SELECT></TD>
+	  </TR>-->
+	  
+	  <TR height=30 valign=center>
+		<TD width="30%" align=Right>Alternative Phone # : </TD>
+		<TD width="70%" align=left>&nbsp;&nbsp;<INPUT maxLength=20 readonly=true name=AhPhone style="HEIGHT: 22px; TEXT-TRANSFORM: uppercase; WIDTH: 110px" value="<%=AhPhone%>" class="IB"></TD>
+	  </TR>
+	  <TR height=30 valign=center>
+		<TD width="30%" align=Right>Mobile # : </TD>
+		<TD width="70%" align=left>&nbsp;&nbsp;<INPUT maxLength=20 name=Mobile style="HEIGHT: 22px; TEXT-TRANSFORM: uppercase; WIDTH: 110px" value="<%=Mobile%>" class="IB"></TD>
+	  </TR>
+	  <TR height=30 valign=bottom>
+		<td width="30%" align=Right valign=middle>Email : </td>
+		<td width="70%" align=left>&nbsp;&nbsp;<INPUT maxLength=50 name=CusEmail style="HEIGHT: 22px; TEXT-TRANSFORM: uppercase; WIDTH: 200px" value="<%=CusEmail%>" class="IB"><br></td>
+	  </TR>	  	  	  
+	  <TR height=30 valign=bottom>
+		<td width="30%" align=Right valign=middle>Address : </td>
+		<td width="70%" align=left>&nbsp;&nbsp;<INPUT maxLength=50 name=Address1 style="HEIGHT: 22px; TEXT-TRANSFORM: uppercase; WIDTH: 200px" value="<%=Address1%>" class="IB"><br></td>
+	  </TR>
+	  <TR height=30 valign=top>
+		<td width="30%" align=Right>&nbsp;</td>
+		<td width="70%" align=left>&nbsp;&nbsp;<INPUT maxLength=50  name=Address2 style="HEIGHT: 22px; TEXT-TRANSFORM: uppercase; WIDTH: 200px" value="<%=Address2%>" class="IB"><br></td>
+	  </TR>	  
+	  <TR height=30 valign=top>
+		<td width="30%" align=Right>&nbsp;</td>
+		<td width="70%" align=left>&nbsp;&nbsp;<INPUT maxLength=50 name=Address3 style="HEIGHT: 22px; TEXT-TRANSFORM: uppercase; WIDTH: 200px" value="<%=Address3%>" class="IB"><br></td>
+	  </TR>	  
+	  <TR height=30 valign=top>
+		<td width="30%" align=Right>Town  : </td>
+		<td width="70%" align=left>&nbsp;&nbsp;<INPUT maxLength=50 readonly=true name=City style="HEIGHT: 22px; TEXT-TRANSFORM: uppercase; WIDTH: 180px" value="<%=City%>" class="IB"><br></td>
+	  </TR>
+	  <TR height=30 valign=top>
+		<td width="30%" align=Right>County  : </td>
+		<td width="70%" align=left>&nbsp;&nbsp;<INPUT maxLength=50 readonly=true name=State style="HEIGHT: 22px; TEXT-TRANSFORM: uppercase; WIDTH: 180px" value="<%=State%>" class="IB">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		Post Code&nbsp;&nbsp;&nbsp;<INPUT maxLength=15 readonly=true name=Zip style="HEIGHT: 22px; TEXT-TRANSFORM: uppercase; WIDTH: 100px" value="<%=Zip%>" class="IB">
+		</td>		
+	  </TR>
+	  <TR height=30 valign=top>
+		<td width="30%" align=Right>Area  : </td>
+		<td width="70%" align=left>&nbsp;&nbsp;<INPUT maxLength=50 readonly=true name=ZipArea style="HEIGHT: 22px; TEXT-TRANSFORM: uppercase; WIDTH: 180px" value="<%=ZipArea%>" class="IB">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		Area Code&nbsp;&nbsp;&nbsp;<INPUT maxLength=15 readonly=true name=ZipAreaN style="HEIGHT: 22px; TEXT-TRANSFORM: uppercase; WIDTH: 100px" value="<%=ZipAreaN%>" class="IB">
+		</td>		
+	  </TR>
+	  <TR height=30 valign=top>
+		<td width="30%" align=Right>Lead ID  : </td>
+		<td width="70%" align=left>&nbsp;&nbsp;<INPUT maxLength=10 readonly=true name=LeadID style="HEIGHT: 22px; TEXT-TRANSFORM: uppercase; WIDTH: 80px" value="<%=LeadID%>" class="IB"><br></td>
+	  </TR>
+	  <TR height=30 valign=top>
+		<td width="30%" align=Right>Supplier Batch No  : </td>
+		<td width="70%" align=left>&nbsp;&nbsp;<INPUT maxLength=10 readonly=true name=SupplierBatchNo style="HEIGHT: 22px; TEXT-TRANSFORM: uppercase; WIDTH: 80px" value="<%=SupplierBatchNo%>" class="IB"><br></td>
+	  </TR>
+<tr>&nbsp;
+</tr>
+	</TABLE>
+</td></tr>
+
+</Table>
+<br>
+
+<tr>
+<TABLE align=center cellPadding=0 cellSpacing=0 width="90%" border=0 background="" bordercolor=Black>
+	<TR>
+	  <TD COLSPAN=3><INPUT type="checkbox" name=Shipto <%if shipto=true then Response.Write("checked")%> ><b>General Criteria</b><br><br>
+		<DIV id="divShipto" style="position: absolute; VISIBILITY: Hidden">
+		<TABLE align=center cellPadding=0 cellSpacing=0 width="100%" border=1 background="" bordercolor=Black>
+			<tr height=20  bgcolor=Black><TD><font  color=Orange>&nbsp;&nbsp;</font></TD>
+			</tr>			
+			<TD>
+				<TABLE align=center cellPadding=0 cellSpacing=0 width="90%" border=0 background="">
+			      <TD>
+					<TABLE align=center cellPadding=0 cellSpacing=0 width="90%" border=0 background="">
+					  
+					<TR height=30 valign=center>
+						<TD width="70%" align=left>Do you Own the Property?</TD>
+						<TD width="30%" align=left>&nbsp;
+						<select name="OwnProper">
+						<option value=""<%if OwnProper="" then Response.Write("Selected")%>></option>
+						<option value="Yes"<%if OwnProper="Yes" then Response.Write("Selected")%>>Yes</option>
+						<option value="No"<%if OwnProper="No" then Response.Write("Selected")%>>No</option>
+						<option value="Private Renter"<%if OwnProper="Private Renter" then Response.Write("Selected")%>>Private Renter</option>
+						</select> 
+						</TD>
+					</TR>
+					<TR height=30 valign=center>
+						<TD width="70%" align=left>What type of Property are you living in?</TD>
+						<TD width="30%" align=left>&nbsp;
+						<select name="InsuProp">
+						<option value=""<%if InsuProp="" then Response.Write("Selected")%>></option>
+						<option value="Mid Terrace"<%if InsuProp="Mid Terrace" then Response.Write("Selected")%>>Mid Terrace</option>
+						<option value="Detached House"<%if InsuProp="Detached House" then Response.Write("Selected")%>>Detached House</option>
+						<option value="Flat"<%if InsuProp="Flat" then Response.Write("Selected")%>>Flat</option>
+						<option value="Detached Bungalow"<%if InsuProp="Detached Bungalow" then Response.Write("Selected")%>>Detached Bungalow</option>																												
+						<option value="Semi-Detached House"<%if InsuProp="Semi-Detached House" then Response.Write("Selected")%>>Semi-Detached House</option>																												
+						<option value="Semi-Detached Bungalow"<%if InsuProp="Semi-Detached Bungalow" then Response.Write("Selected")%>>Semi-Detached Bungalow</option>																																		
+						<option value="End Terrace"<%if InsuProp="End Terrace" then Response.Write("Selected")%>>End Terrace</option>					
+						</select> 
+						</TD>
+					</TR>
+					<TR height=30 valign=center>
+						<TD width="70%" align=left>When was the Property Built?</TD>
+						<TD width="30%" align=left>&nbsp;
+						<select name="InsuPropBuilt">
+						<option value=""<%if InsuPropBuilt="" then Response.Write("Selected")%>></option>
+						<option value="Before 1900"<%if InsuPropBuilt="Before 1900" then Response.Write("Selected")%>>Before 1900</option>
+						<option value="1910's"<%if InsuPropBuilt="1910's" then Response.Write("Selected")%>>1910's</option>
+						<option value="1920's"<%if InsuPropBuilt="1920's" then Response.Write("Selected")%>>1920's</option>
+						<option value="1930's"<%if InsuPropBuilt="1930's" then Response.Write("Selected")%>>1930's</option>
+						<option value="1940's"<%if InsuPropBuilt="1940's" then Response.Write("Selected")%>>1940's</option>
+						<option value="1950's"<%if InsuPropBuilt="1950's" then Response.Write("Selected")%>>1950's</option>
+						<option value="1960's"<%if InsuPropBuilt="1960's" then Response.Write("Selected")%>>1960's</option>
+						<option value="1970's"<%if InsuPropBuilt="1970's" then Response.Write("Selected")%>>1970's</option>
+						<option value="1980's"<%if InsuPropBuilt="1980's" then Response.Write("Selected")%>>1980's</option>
+						</select> 
+						</TD>
+					</TR>	
+					<TR height=30 valign=center>
+						<TD width="70%" align=left>Is the Customer on any Benefits Allowances Or Credits?</TD>
+						<TD width="30%" align=left>&nbsp;
+						<select name="InsuCustAllow" onchange="javascript:ddQsix()">
+						<option value=""<%if InsuCustAllow="" then Response.Write("Selected")%>></option>
+						<option value="Yes"<%if InsuCustAllow="Yes" then Response.Write("Selected")%>>Yes</option>
+						<option value="No"<%if InsuCustAllow="No" then Response.Write("Selected")%>>No</option>																												
+						</select> 
+						</TD>
+						<td><A href="Types of ESA.doc" style="color:red">Types of ESA</a></td>
+					</TR>
+					<TABLE align=center cellPadding=0 cellSpacing=0 width="90%" border=0 background="">
+					<TR height=30 valign=center>
+						<TD width="35%" align=left>Benefits</TD>
+						<TD width="65%" align=left>&nbsp;
+						<select name="InsuBenefits" onchange="javascript:ddQsix1()">
+						<option value=""<%if InsuBenefits="" then Response.Write("Selected")%>></option>
+						<option value="Pension Credit"<%if InsuBenefits="Pension Credit" then Response.Write("Selected")%>>Pension Credit</option>																												
+						<option value="Child Tax Credit - Income Less Than £ 15,860"<%if InsuBenefits="Child Tax Credit - Income Less Than £ 15,860" then Response.Write("Selected")%>>Child Tax Credit - Income Less Than £ 15,860</option>																												
+						<option value="Income-based job seeker's allowance"<%if InsuBenefits="Income-based job seeker's allowance" then Response.Write("Selected")%>>Income-based job seeker's allowance</option>
+						<option value="Income related employment and support allowance"<%if InsuBenefits="Income related employment and support allowance" then Response.Write("Selected")%>>Income related employment and support allowance</option>
+						<option value="Income support"<%if InsuBenefits="Income support" then Response.Write("Selected")%>>Income support</option>
+						<option value="Working tax credit with a relevant income below £15860"<%if InsuBenefits="Working tax credit with a relevant income below £15860" then Response.Write("Selected")%>>Working tax credit with a relevant income below £15860</option>	
+						<option value="Receive Universal Credit with monthly earned income of £ 1,250 or less in any one of the assessment periods in the previous 12 months"<%if InsuBenefits="Receive Universal Credit with monthly earned income of £ 1,250 or less in any one of the assessment periods in the previous 12 months" then Response.Write("Selected")%>>Receive Universal Credit with monthly earned income of £ 1,250 or less in any one of the assessment periods in the previous 12 months</option>	
+						</select> 
+						</TD>
+					</TR>
+					<TR height=30 valign=center>
+						<TD width="30%" align=left></TD>
+						<TD width="70%" align=left>&nbsp;
+						<select name="InsuBenefits2">
+						<option value=""<%if InsuBenefits2="" then Response.Write("Selected")%>></option>
+						<option value="A) Disabled child premium"<%if InsuBenefits2="A) Disabled child premium" then Response.Write("Selected")%>>A) Disabled child premium</option>																												
+						<option value="B) Parental responsibility for a child under 16 that lives at the property"<%if InsuBenefits2="B) Parental responsibility for a child under 16 that lives at the property" then Response.Write("Selected")%>>B) Parental responsibility for a child under 16 that lives at the property</option>						
+						<option value="C) Parental responsibility for a child who is 16 to 20, and in full time education other than higher education"<%if InsuBenefits2="C) Parental responsibility for a child who is 16 to 20, and in full time education other than higher education" then Response.Write("Selected")%>>C) Parental responsibility for a child who is 16 to 20, and in full time education other than higher education</option>
+						<option value="D) Pension premium,higher pension premium or enhanced pension premium"<%if InsuBenefits2="D) Pension premium,higher pension premium or enhanced pension premium" then Response.Write("Selected")%>>D) Pension premium,higher pension premium or enhanced pension premium</option>
+						<option value="E) In receipt of child tax credit which includes a disability or severe disability element"<%if InsuBenefits2="E) In receipt of child tax credit which includes a disability or severe disability element" then Response.Write("Selected")%>>E) In receipt of child tax credit which includes a disability or severe disability element</option>
+						<option value="F) Disability premium,enhanced pension premium or severe disability premium"<%if InsuBenefits2="F) Disability premium,enhanced pension premium or severe disability premium" then Response.Write("Selected")%>>F) Disability premium,enhanced pension premium or severe disability premium</option>
+						<option value="G) Receving a work related activity or support companent(only with number 2) "<%if InsuBenefits2="G) Receving a work related activity or support companent(only with number 2) " then Response.Write("Selected")%>>G) Receving a work related activity or support companent(only with number 2) </option>						
+																	
+						</select> 
+						</TD>
+					</TR>
+					<TR height=30 valign=center>
+						<TD width="30%" align=left></TD>
+						<TD width="70%" align=left>&nbsp;
+						<select name="InsuBenefits3">
+						<option value=""<%if InsuBenefits3="" then Response.Write("Selected")%>></option>
+						<option value="A) Parental responsibility for a child under 16 that lives at the property"<%if InsuBenefits3="A) Parental responsibility for a child under 16 that lives at the property" then Response.Write("Selected")%>>A) Parental responsibility for a child under 16 that lives at the property</option>																												
+						<option value="B) Parental responsibility for a child who is 16 to 20, and in full time education other than higher education"<%if InsuBenefits3="B) Parental responsibility for a child who is 16 to 20, and in full time education other than higher education" then Response.Write("Selected")%>>B) Parental responsibility for a child who is 16 to 20, and in full time education other than higher education</option>																												
+						<option value="C) In receipt of a disabled worker element or severe disability element"<%if InsuBenefits3="C) In receipt of a disabled worker element or severe disability element" then Response.Write("Selected")%>>C) In receipt of a disabled worker element or severe disability element</option>
+						<option value="D) Aged 60 or over"<%if InsuBenefits3="D) Aged 60 or over" then Response.Write("Selected")%>>D) Aged 60 or over</option>
+						<option value="1) Have limited capability for work, or limited capability for work and work-related activity"<%if InsuBenefits3="1) Have limited capability for work, or limited capability for work and work-related activity" then Response.Write("Selected")%>>1) Have limited capability for work, or limited capability for work and work-related activity</option>
+						<option value="2) Receive Disability Living Allowance"<%if InsuBenefits3="2) Receive Disability Living Allowance" then Response.Write("Selected")%>>2) Receive Disability Living Allowance</option>
+						<option value="3) Receive Personal Independence Payment"<%if InsuBenefits3="3) Receive Personal Independence Payment" then Response.Write("Selected")%>>3) Receive Personal Independence Payment</option>
+						</select> 
+						</TD>
+					</TR>
+					
+					</TABLE>
+					
+					<TR height=30 valign=bottom>
+						<td width="70%" align=left>What is the Expriry date of benefit letter? </td>
+						<td width="30%" align=left>&nbsp;&nbsp;<INPUT maxLength=50 name=InsuAgeProof style="HEIGHT: 22px; TEXT-TRANSFORM: uppercase; WIDTH: 90px" value="<%=InsuAgeProof%>" class="IB"> <br>  </td> 
+					</TR>
+					
+					<TR height=30 valign=bottom>
+						<td width="70%" align=left>Date of Birth? </td>
+						<td width="30%" align=left>&nbsp;&nbsp;<INPUT maxLength=50 name=cust_dob style="HEIGHT: 22px; TEXT-TRANSFORM: uppercase; WIDTH: 90px" value="<%=cust_dob%>" class="IB">DD/MM/YYYY<br>  </td> 
+					</TR>
+					</TABLE>
+				</TD>
+			  </TABLE>
+			</TD>
+		</Table>
+		</div>
+	  </TD>
+	</TR>
+</TABLE>
+</tr>
+<tr>
+<TABLE align=center cellPadding=0 cellSpacing=0 width="90%" border=0 background="" bordercolor=Black>
+	<TR>
+	    <TD COLSPAN=3><INPUT type="checkbox" name=Ship3 <%if ship3=true then Response.Write("checked")%> ><b>Loft</b><br><br>
+		<DIV id="divShip3" style="position: absolute; VISIBILITY: Hidden">
+		<TABLE align=center cellPadding=0 cellSpacing=0 width="95%" border=1 background="" bordercolor=Black>
+			<tr height=20 bgcolor=Black><TD><font  color=Orange>&nbsp;&nbsp;Details</font></TD>
+			</tr>
+			<tr height=140>
+			
+				<TD>
+					<TABLE align=center cellPadding=0 cellSpacing=0 width="90%" border=0 background="">
+                        <P align=left><strong><FONT face="serif" color="Black"  size=2 align="left">Hello is this Mr/Mrs … My name is ------- and I am calling you from the grant advisory services from the London city</FONT></strong></P>
+                        <P align=left><strong><FONT face="serif" color="Black"  size=2 align="left">I am calling to let you know about the government grant that’s being given to all the property owners in London now to get the loft insulated to the current government standards</FONT></strong></P>
+                        <P align=left><strong><FONT face="serif" color="Black"  size=2 align="left">So are you the home owner for…. </FONT></strong></P>
+                        <P align=left><strong><FONT face="serif" color="Black"  size=2 align="left">When was loft insulated last? Would you say it’s more than 10 years - if yes</FONT></strong></P>
+                        <P align=left><strong><FONT face="serif" color="Black"  size=2 align="left">You can take advantage of this grant now and get it done to the current standards absolutely free of charge</FONT></strong></P>
+                        <P align=left><strong><FONT face="serif" color="Black"  size=2 align="left">What type of property you live in?</FONT></strong></P>
+                        <P align=left><strong><FONT face="serif" color="Black"  size=2 align="left">When was the property built?</FONT></strong></P>
+                        <P align=left><strong><FONT face="serif" color="Black"  size=2 align="left">Loft Criteria</FONT></strong></P>
+                        <P align=left><strong><FONT face="serif" color="Black"  size=2 align="left">1.	Has the loft been converted to any room or is it just a normal loft</FONT></strong></P>
+                        <P align=left><strong><FONT face="serif" color="Black"  size=2 align="left">2.	Has the loft been boarded? Have you put any floorboards or is it just the joist up there</FONT></strong></P>
+                        <P align=left><strong><FONT face="serif" color="Black"  size=2 align="left">2.	Is the loft empty? Can it be emptied </FONT></strong></P>
+                        <P align=left><strong><FONT face="serif" color="Black"  size=2 align="left">4.	Is there space for a person to get in to the loft and work up there</FONT></strong></P>
+                        <P align=left><strong><FONT face="serif" color="Black"  size=2 align="left">I can confirm that you are definitely eligible to get the grant and have your loft insulated free of charge. So what will happen now is the first step is a free no obligation survey where the local government approved surveyor would come down, take a look in to the loft to see how much insulation is up there and how more is required. He will give you all the grant details as well and once you go through it and if you are satisfied then you can go ahead and get the work done for free.</FONT></strong></P>
+                        <P align=left><strong><FONT face="serif" color="Black"  size=2 align="left">I will now pass this call to my supervisor who would have a quick word with you to confirm all the details I have given you and he will let you know the company’s name as well which would be coming down to inspect the property… is that ok Mr/Mrs…</FONT></strong></P>
+					  <TR height=30 valign=center>
+						<TD width="70%" align=left>How long ago was loft last insulated? </TD>
+						<TD width="30%" align=left>&nbsp;
+						<select name="InsuLoftTen">
+						<option value=""<%if InsuLoftTen="" then Response.Write("Selected")%>></option>
+						<option value="10 yrs"<%if InsuLoftTen="10 yrs" then Response.Write("Selected")%>>10 yrs</option>
+						<option value="15 yrs"<%if InsuLoftTen="15 yrs" then Response.Write("Selected")%>>15 yrs</option>
+						<option value="20 yrs"<%if InsuLoftTen="20 yrs" then Response.Write("Selected")%>>20 yrs</option>
+						<option value="25 yrs"<%if InsuLoftTen="25 yrs" then Response.Write("Selected")%>>25 yrs</option>
+						</select> 
+						</TD>
+					   </TR>
+					
+					    <TR height=40 valign=center>
+						    <TD width="70%" align=left>How Deep is the Present Insulation?</TD>
+						    <TD width="30%" align=left>&nbsp;
+						        <select name="InsuDeep" onchange="javascript:dds()">
+						        <option value=""<%if InsuDeep="" then Response.Write("Selected")%>></option>
+						        <option value="Below"<%if InsuDeep="Below" then Response.Write("Selected")%>>Below</option>	
+						        <option value="In level"<%if InsuDeep="In level" then Response.Write("Selected")%>>In level</option>						
+						        <option value="Above"<%if InsuDeep="Above" then Response.Write("Selected")%>>Above</option>	
+						        <option value="Not Sure"<%if InsuDeep="Not Sure" then Response.Write("Selected")%>>Not Sure</option>	
+        						</select> 
+		    				</TD>
+			    		</TR>
+
+					
+					<TR height=30 valign=center>
+						<TD width="70%" align=left>Has the loft been boarded</TD>
+						<TD width="30%" align=left>&nbsp;
+						<select name="InsuLoftBoard">
+						<option value=""<%if InsuLoftBoard="" then Response.Write("Selected")%>></option>
+						<option value="Yes"<%if InsuLoftBoard="Yes" then Response.Write("Selected")%>>Yes</option>
+						<option value="No"<%if InsuLoftBoard="No" then Response.Write("Selected")%>>No</option>						
+						<option value="Partly"<%if InsuLoftBoard="Partly" then Response.Write("Selected")%>>Partly</option>																												
+						
+						</select> 
+						</TD>
+					</TR>
+					
+					<TR height=30 valign=center>
+						<TD width="70%" align=left>Can the boards be lifted for insulation work to be carried out?</TD>
+						<TD width="30%" align=left>&nbsp;
+						<select name="InsuLoftBoard1">
+						<option value=""<%if InsuLoftBoard1="" then Response.Write("Selected")%>></option>
+						<option value="Yes"<%if InsuLoftBoard1="Yes" then Response.Write("Selected")%>>Yes</option>
+						<option value="No"<%if InsuLoftBoard1="No" then Response.Write("Selected")%>>No</option>																												
+						</select> 
+						</TD>
+					</TR>
+
+					<TR height=30 valign=center>
+						<TD width="70%" align=left>Is the loft empty ?</TD>
+						<TD width="30%" align=left>&nbsp;
+						<select name="InsuLoftEmp">
+						<option value=""<%if InsuLoftEmp="" then Response.Write("Selected")%>></option>
+						<option value="Yes"<%if InsuLoftEmp="Yes" then Response.Write("Selected")%>>Yes</option>
+						<option value="No"<%if InsuLoftEmp="No" then Response.Write("Selected")%>>No</option>																												
+						</select> 
+						</TD>
+					</TR>
+					
+					<TR height=30 valign=center>
+						<TD width="70%" align=left>Can it be cleared out for the work to be carried out</TD>
+						<TD width="30%" align=left>&nbsp;
+						<select name="InsuLoftEmp1">
+						<option value=""<%if InsuLoftEmp1="" then Response.Write("Selected")%>></option>
+						<option value="Yes"<%if InsuLoftEmp1="Yes" then Response.Write("Selected")%>>Yes</option>
+						<option value="No"<%if InsuLoftEmp1="No" then Response.Write("Selected")%>>No</option>																												
+						</select> 
+						</TD>
+					</TR>
+					
+					<TR height=30 valign=center>
+						<TD width="70%" align=left>Is there room for someone to work in loft</TD>
+						<TD width="30%" align=left>&nbsp;
+						<select name="InsuWorkLoft">
+						<option value=""<%if InsuWorkLoft="" then Response.Write("Selected")%>></option>
+						<option value="Yes"<%if InsuWorkLoft="Yes" then Response.Write("Selected")%>>Yes</option>
+						<option value="No"<%if InsuWorkLoft="No" then Response.Write("Selected")%>>No</option>																												
+						</select> 
+						</TD>
+					</TR>
+					
+					<TR height=30 valign=center>
+						<TD width="70%" align=left>Has the loft been converted</TD>
+						<TD width="30%" align=left>&nbsp;
+						<select name="InsuLoftConv">
+						<option value=""<%if InsuLoftConv="" then Response.Write("Selected")%>></option>
+						<option value="Yes"<%if InsuLoftConv="Yes" then Response.Write("Selected")%>>Yes</option>
+						<option value="No"<%if InsuLoftConv="No" then Response.Write("Selected")%>>No</option>																												
+						</select> 
+						</TD>
+					</TR>
+					</TABLE>
+				</TD>
+			</tr>
+		</Table>
+		</DIV>
+		</TD>
+		</TR>
+</TABLE>
+</tr>
+<tr>
+<TABLE align=center cellPadding=0 cellSpacing=0 width="90%" border=0 background="" bordercolor=Black>
+	<TR>
+	  <TD COLSPAN=3><INPUT type="checkbox" name=Ship1 <%if ship1=true then Response.Write("checked")%> ><b>Cavity</b><br><br>
+		<DIV id="divShip1" style="position: absolute; VISIBILITY: Hidden">
+		<TABLE align=center cellPadding=0 cellSpacing=0 width="100%" border=1 background="" bordercolor=Black>
+			<tr height=20  bgcolor=Black><TD><font  color=Orange>&nbsp;&nbsp;Cavity</font></TD>
+			</tr>
+			<tr height=130>
+									
+				<TD>
+					<TABLE align=center cellPadding=0 cellSpacing=0 width="90%" border=0 background="">
+					  <TR height=30 valign=center>
+						<TD width="70%" align=left>When was the property built?</TD>
+						<TD width="30%" align=left>&nbsp;
+						<select name="InsuBuiltYear">
+						<option value=""<%if InsuBuiltYear="" then Response.Write("Selected")%>></option>
+						<option value="Before 1930"<%if InsuBuiltYear="Before 1930" then Response.Write("Selected")%>>Before 1930</option>
+						<option value="1930's"<%if InsuBuiltYear="1930's" then Response.Write("Selected")%>>1930's</option>
+						<option value="1940's"<%if InsuBuiltYear="1940's" then Response.Write("Selected")%>>1940's</option>
+						<option value="1950's"<%if InsuBuiltYear="1950's" then Response.Write("Selected")%>>1950's</option>
+						<option value="1960's"<%if InsuBuiltYear="1960's" then Response.Write("Selected")%>>1960's</option>
+						<option value="1970's"<%if InsuBuiltYear="1970's" then Response.Write("Selected")%>>1970's</option>
+						<option value="1980's"<%if InsuBuiltYear="1980's" then Response.Write("Selected")%>>1980's</option>
+						</select> 
+						</TD>
+					</TR>
+
+					<TR height=30 valign=center>
+						<TD width="70%" align=left>Is the Structure Timber Frame / Steel?</TD>
+						<TD width="30%" align=left>&nbsp;
+						<select name="InsuTimFra">
+						<option value=""<%if InsuTimFra="" then Response.Write("Selected")%>></option>
+						<option value="Yes"<%if InsuTimFra="Yes" then Response.Write("Selected")%>>Yes</option>
+						<option value="No"<%if InsuTimFra="No" then Response.Write("Selected")%>>No</option>																												
+						</select> 
+						</TD>
+					</TR>
+					
+					<TR height=30 valign=center>
+						<TD width="70%" align=left>Does the property have solid walls or cavity walls?</TD>
+						<TD width="30%" align=left>&nbsp;
+						<select name="InsuHaveCavity">
+						<option value=""<%if InsuHaveCavity="" then Response.Write("Selected")%>></option>
+						<option value="Solid wall"<%if InsuHaveCavity="Solid wall" then Response.Write("Selected")%>>Solid wall</option>
+						<option value="Cavity Wall"<%if InsuHaveCavity="Cavity Wall" then Response.Write("Selected")%>>Cavity Wall</option>																												
+						</select> 
+						</TD>
+					</TR>
+					<TR height=30 valign=center>
+						<TD width="70%" align=left>The brick pattern of the outside walls is a combination of</TD>
+						<TD width="30%" align=left>&nbsp;
+						<select name="InsuBuiltBefo">
+						<option value=""<%if InsuBuiltBefo="" then Response.Write("Selected")%>></option>
+						<option value="Full brick Full brick"<%if InsuBuiltBefo="Full brick Full brick" then Response.Write("Selected")%>>Full brick Full brick</option>
+						<option value="Full brick Half brick"<%if InsuBuiltBefo="Full brick Half brick" then Response.Write("Selected")%>>Full brick Half brick</option>																												
+						</select> 
+						</TD>
+					</TR>
+					
+					<TR height=30 valign=center>
+						<TD width="70%" align=left>Thickness of the walls is it 10.5 to 12 inches?</TD>
+						<TD width="30%" align=left>&nbsp;
+						<select name="InsuDampWall25">
+						<option value=""<%if InsuDampWall25="" then Response.Write("Selected")%>></option>
+						<option value="Yes"<%if InsuDampWall25="Yes" then Response.Write("Selected")%>>Yes</option>
+						<option value="No"<%if InsuDampWall25="No" then Response.Write("Selected")%>>No</option>																												
+						</select> 
+						</TD>
+					</TR>
+
+					<TR height=30 valign=center>
+						<TD width="70%" align=left>Does the Property Have Tiles or Cladding on the Walls?</TD>
+						<TD width="30%" align=left>&nbsp;
+						<select name="InsuTileCla">
+						<option value=""<%if InsuTileCla="" then Response.Write("Selected")%>></option>
+						<option value="Yes"<%if InsuTileCla="Yes" then Response.Write("Selected")%>>Yes</option>
+						<option value="No"<%if InsuTileCla="No" then Response.Write("Selected")%>>No</option>																										
+						<option value="Partly"<%if InsuTileCla="Partly" then Response.Write("Selected")%>>Partly</option>		
+																											
+						</select> 
+						</TD>
+					</TR>
+					
+					<TR height=30 valign=center>
+						<TD width="70%" align=left>Do you have damp walls?</TD>
+						<TD width="30%" align=left>&nbsp;
+						<select name="InsuDampWall">
+						<option value=""<%if InsuDampWall="" then Response.Write("Selected")%>></option>
+						<option value="Yes"<%if InsuDampWall="Yes" then Response.Write("Selected")%>>Yes</option>
+						<option value="No"<%if InsuDampWall="No" then Response.Write("Selected")%>>No</option>																												
+						</select> 
+						</TD>
+					</TR>
+					
+					</TABLE>
+				</TD>
+			</tr>
+		</Table>
+		</div>
+	  </TD>
+	</TR>
+</TABLE>
+</tr>
+<tr>
+<TABLE align=center cellPadding=0 cellSpacing=0 width="90%" border=0 background="" bordercolor=Black>
+	<TR>
+	  <TD COLSPAN=3><INPUT type="checkbox" name=Ship5 <%if ship5=true then Response.Write("checked")%> ><b>PROPERTY SUITABILITY INDICATOR FOR BOILER REPLACEMENT </b><br><br>
+		<DIV id="divShip5" style="position: absolute; VISIBILITY: Hidden">
+		<TABLE align=center cellPadding=0 cellSpacing=0 width="100%" border=1 background="" bordercolor=Black>
+
+			<TD>
+				<TABLE align=center cellPadding=0 cellSpacing=0 width="90%" border=0 background="">
+					  <TR height=30 valign=center>
+						<TD width="80%" align=left>Property type</TD>
+						<TD width="20%" align=left>&nbsp;
+						    <select name="PSI_Ptype" onchange="javascript:psi1()">
+						        <option <%if PSI_Ptype="" then Response.Write("Selected")%>></option>
+						        <option <%if PSI_Ptype="Flat" then Response.Write("Selected")%>>Flat</option>
+						        <option <%if PSI_Ptype="Bungalow" then Response.Write("Selected")%>>Bungalow</option>
+						        <option <%if PSI_Ptype="House" then Response.Write("Selected")%>>House</option>
+						    </select> 
+						</TD>
+					  </TR>
+					  
+					  <TR height=30 valign=center>
+						<TD width="80%" align=left>Build  of property</TD>
+						<TD width="20%" align=left>&nbsp;
+						    <select name="PSI_Bprop" onchange="javascript:psi1()">
+						        <option <%if PSI_Bprop="" then Response.Write("Selected")%>></option>
+						        <option <%if PSI_Bprop="Detached" then Response.Write("Selected")%>>Detached</option>
+						        <option <%if PSI_Bprop="Semi detached" then Response.Write("Selected")%>>Semi detached</option>
+						        <option <%if PSI_Bprop="End Terraced" then Response.Write("Selected")%>>End Terraced</option>
+						        <option <%if PSI_Bprop="Terraced" then Response.Write("Selected")%>>Terraced</option>
+						    </select> 
+						</TD>
+					  </TR>
+					  
+					  <TR height=30 valign=center>
+						<TD width="80%" align=left>Size of property No of Bedrooms</TD>
+						<TD width="20%" align=left>&nbsp;
+						    <select name="PSI_Sprop" onchange="javascript:psi1()">
+						        <option <%if PSI_Sprop="" then Response.Write("Selected")%>></option>
+						        <option <%if PSI_Sprop="2" then Response.Write("Selected")%>>2</option>
+						        <option <%if PSI_Sprop="3" then Response.Write("Selected")%>>3</option>
+						        <option <%if PSI_Sprop="4" then Response.Write("Selected")%>>4</option>
+						        <option <%if PSI_Sprop="5+" then Response.Write("Selected")%>>5+</option>
+						    </select> 
+						</TD>
+					  </TR>
+					  
+					  <TR height=30 valign=center>
+						<TD width="80%" align=left>Windows in property</TD>
+						<TD width="20%" align=left>&nbsp;
+						    <select name="PSI_wprop" onchange="javascript:psi1()">
+						        <option <%if PSI_wprop="" then Response.Write("Selected")%>></option>
+						        <option <%if PSI_wprop="Double glazed" then Response.Write("Selected")%>>Double glazed</option>
+						        <option <%if PSI_wprop="Single glazed" then Response.Write("Selected")%>>Single glazed</option>
+						        <option <%if PSI_wprop="Mixture of both" then Response.Write("Selected")%>>Mixture of both</option>
+						    </select> 
+						</TD>
+					  </TR>
+					  
+					  <TR height=30 valign=center>
+						<TD width="80%" align=left>Construction of property</TD>
+						<TD width="20%" align=left>&nbsp;
+						    <select name="PSI_cprop" onchange="javascript:psi1()">
+						        <option <%if PSI_cprop="" then Response.Write("Selected")%>></option>
+						        <option <%if PSI_cprop="Solid brick walls" then Response.Write("Selected")%>>Solid brick walls</option>
+						        <option <%if PSI_cprop="cavity brick walls" then Response.Write("Selected")%>>cavity brick walls</option>
+						    </select> 
+						</TD>
+					  </TR>
+					  
+					  <TR height=30 valign=center>
+						<TD width="80%" align=left>Age of property</TD>
+						<TD width="20%" align=left>&nbsp;
+						    <select name="PSI_aprop" onchange="javascript:psi1()">
+						        <option <%if PSI_aprop="" then Response.Write("Selected")%>></option>
+						        <option <%if PSI_aprop="Below 30years" then Response.Write("Selected")%>>Below 30years</option>
+						        <option <%if PSI_aprop="30-50 years" then Response.Write("Selected")%>>30-50 years</option>
+						        <option <%if PSI_aprop="50-70 years" then Response.Write("Selected")%>>50-70 years</option>
+						        <option <%if PSI_aprop="70 years plus" then Response.Write("Selected")%>>70 years plus</option>
+						    </select> 
+						</TD>
+					  </TR>
+					  
+					  <TR height=30 valign=center>
+						<TD width="80%" align=left>Insulation</TD>
+						<TD width="20%" align=left>&nbsp;
+						    <select name="PSI_iprop" onchange="javascript:psi1()">
+						        <option <%if PSI_iprop="" then Response.Write("Selected")%>></option>
+						        <option <%if PSI_iprop="Loft insulation in last 10 years" then Response.Write("Selected")%>>Loft insulation in last 10 years</option>
+						        <option <%if PSI_iprop="no loft insulation" then Response.Write("Selected")%>>no loft insulation</option>
+						        <option <%if PSI_iprop="cavity wall insulation" then Response.Write("Selected")%>>cavity wall insulation</option>
+						    </select> 
+						</TD>
+					  </TR>
+					  
+					  <TR height=30 valign=center>
+						<TD width="80%" align=left>Building extensions / alterations.</TD>
+						<TD width="20%" align=left>&nbsp;
+						    <select name="PSI_eprop" onchange="javascript:psi1()">
+						        <option <%if PSI_eprop="" then Response.Write("Selected")%>></option>
+						        <option <%if PSI_eprop="Loft conversion" then Response.Write("Selected")%>>Loft conversion</option>
+						        <option <%if PSI_eprop="single story extension" then Response.Write("Selected")%>>single story extension</option>
+						        <option <%if PSI_eprop="double story extension" then Response.Write("Selected")%>>double story extension</option>
+						    </select> 
+						</TD>
+					  </TR>
+					  <TR height=30 valign=bottom>
+						<td width="50%" align=Right valign=middle>Score for this lead is (16 AND ABOVE PASS FOR EPC) : </td>
+						<td width="50%" align=left>&nbsp;&nbsp;<INPUT readonly=true maxLength=50 name=lead_score style="HEIGHT: 22px; TEXT-TRANSFORM: uppercase; WIDTH: 50px" value="<%=lead_score%>" class="IB"><br></td>
+					  </TR>
+			    </TABLE>
+			</TD>
+	    </TABLE>
+		</div>
+	  </TD>
+	</TR>
+</TABLE>
+</tr>
+<tr>
+<TABLE align=center cellPadding=0 cellSpacing=0 width="90%" border=0 background="" bordercolor=Black>
+	<TR>
+	  <TD COLSPAN=3><INPUT type="checkbox" name=Ship4 <%if ship4=true then Response.Write("checked")%> ><b>Boiler</b><A href="Boiler Script.docx" style="color:red">Boiler Script</a><br><br>
+		<DIV id="divShip4" style="position: absolute; VISIBILITY: Hidden">
+		<TABLE align=center cellPadding=0 cellSpacing=0 width="100%" border=1 background="" bordercolor=Black>
+			<tr height=20  bgcolor=Black><TD><font  color=Orange>&nbsp;&nbsp;Boiler</font></TD>
+			</tr>
+			    <tr height=130>
+									
+					<TD>
+					<TABLE align=center cellPadding=0 cellSpacing=0 width="90%" border=0 background="">
+					<P align=left><strong><FONT face="serif" color="Black"  size=3 align="left"></FONT></strong></P>
+					    <TR valign=center>
+					<TD width="100%" align=Right colspan="2" >
+                    <table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border-width: 0" bordercolor="#111111" width="100%" id="AutoNumber4">
+                      <tr>
+                        <td width="100%" style="border-style: none; border-width: medium" colspan="3">What type of fuel do you Use?</td>
+                      </tr>
+                      <tr><td width="100%" style="border-style: none; border-width: medium" colspan="3">&nbsp;&nbsp;</TD>
+                      </tr>
+                      <tr>
+                        <td width="35%" style="border-style: none; border-width: medium"><INPUT name="CDigNews1" <%if CDigNews1 = "Gas" then Response.Write("Checked")%> type="checkbox" value="Gas">Gas</td>
+                        <td width="35%" style="border-style: none; border-width: medium"><INPUT name="CDigNews2" <%if CDigNews2 = "Oil" then Response.Write("Checked")%> type="checkbox" value="Oil">Oil</td>
+                        <td width="30%" style="border-style: none; border-width: medium"><INPUT name="CDigNews3" <%if CDigNews3 = "Electric" then Response.Write("Checked")%> type="checkbox" value="Electric">Electric</td>                        
+                      </tr>
+                      <tr>
+                        <td width="35%" style="border-style: none; border-width: medium"><INPUT name="CDigNews4" <%if CDigNews4 = "Gas and Electric" then Response.Write("Checked")%> type="checkbox" value="Gas and Electric">Gas and Electric</td>
+                        <td width="35%" style="border-style: none; border-width: medium"><INPUT name="CDigNews5" <%if CDigNews5 = "Solid Fuel" then Response.Write("Checked")%> type="checkbox" value="Solid Fuel">Solid Fuel</td>                        
+                      </tr>                      
+                      </tr>
+                      <tr><td width="100%" style="border-style: none; border-width: medium" colspan="3">&nbsp;&nbsp;</TD>
+                      </tr>
+                    </table>
+                    </TD>
+					</TR>
+					
+					<TR height=30 valign=center>
+						<TD width="70%" align=left>What Type of Boiler Do you have?(oil doesn’t qualify)
+						<select name="boiler_Type">
+						<option value=""<%if boiler_Type="" then Response.Write("Selected")%>></option>
+						<option value="Combi Boiler"<%if boiler_Type="Combi Boiler" then Response.Write("Selected")%>>Combi Boiler</option>
+						<option value="Gas Boiler"<%if boiler_Type="Gas Boiler" then Response.Write("Selected")%>>Gas Boiler</option>	
+						<option value="Back Boiler"<%if boiler_Type="Back Boiler" then Response.Write("Selected")%>>Back Boiler</option>	
+						</select> 
+						</TD>
+					</TR>
+					<tr><td width="100%" style="border-style: none; border-width: medium; color:red" colspan="3">Condensing Boiler – Plastic Pipes coming out from the Boiler</TD></tr>
+					<tr><td width="100%" style="border-style: none; border-width: medium; color:red" colspan="3"></TD></tr>
+					<tr><td width="100%" style="border-style: none; border-width: medium; color:red" colspan="3"></TD></tr>
+					
+					<TR height=30 valign=bottom>
+						<td width="70%" align=left>how old your current boiler is? Would it be over 10 years old? </td>
+						<td width="30%" align=left>&nbsp;&nbsp;<INPUT maxLength=50 name=boiler_life style="HEIGHT: 22px; TEXT-TRANSFORM: uppercase; WIDTH: 90px" value="<%=boiler_life%>" class="IB"> <br>  </td> 
+					</TR>
+					<TR height=30 valign=bottom>
+						<td width="70%" align=left>Is it broken or have any faults </td>
+						<td width="30%" align=left>&nbsp;&nbsp;<INPUT maxLength=200 name=Boiler_fault style="HEIGHT: 22px; TEXT-TRANSFORM: uppercase; WIDTH: 190px" value="<%=Boiler_fault%>" class="IB"> <br>  </td> 
+					</TR>
+					<TR height=30 valign=bottom>
+						<td width="70%" align=left>Would you be able to give me the make and model of your boiler?</td>
+						<td width="30%" align=left>&nbsp;&nbsp;<INPUT maxLength=150 name=Boiler_make_model style="HEIGHT: 22px; TEXT-TRANSFORM: uppercase; WIDTH: 190px" value="<%=Boiler_make_model%>" class="IB"> <br>  </td> 
+					</TR>
+					<TR height=30 valign=bottom>
+						<td width="70%" align=left>Do you currently pay a boiler breakdown policy?-Roughly How much per month?</td>
+						<td width="30%" align=left>&nbsp;&nbsp;<INPUT maxLength=50 name=boiler_breakdown_policy style="HEIGHT: 22px; TEXT-TRANSFORM: uppercase; WIDTH: 90px" value="<%=boiler_breakdown_policy%>" class="IB"> <br>  </td> 
+					</TR>
+					
+					<TR height=30 valign=center>
+						<TD width="70%" align=left>Are you currently employed? </TD>
+						<TD width="30%" align=left>&nbsp;
+						<select name="B_emp_unemp">
+						<option value=""<%if B_emp_unemp="" then Response.Write("Selected")%>></option>
+						<option value="Employed - Full Time"<%if B_emp_unemp="Employed - Full Time" then Response.Write("Selected")%>>Employed - Full Time</option>
+						<option value="Employed - Part Time"<%if B_emp_unemp="Employed - Part Time" then Response.Write("Selected")%>>Employed - Part Time</option>																												
+						<option value="UnEmployed"<%if B_emp_unemp="UnEmployed" then Response.Write("Selected")%>>UnEmployed</option>																												
+						<option value="Retired"<%if B_emp_unemp="Retired" then Response.Write("Selected")%>>Retired</option>																												
+						</select> 
+						</TD>
+					</TR>
+					
+					<TR height=30 valign=center>
+						<TD width="70%" align=left>Is it a Condensing or Non-Condensing Boiler? </TD>
+						<TD width="30%" align=left>&nbsp;
+						<select name="boiler_replace">
+						<option value=""<%if boiler_replace="" then Response.Write("Selected")%>></option>
+						<option value="Condensing"<%if boiler_replace="Condensing" then Response.Write("Selected")%>>Condensing</option>
+						<option value="Non-Condensing"<%if boiler_replace="Non-Condensing" then Response.Write("Selected")%>>Non-Condensing</option>																												
+						</select> 
+						</TD>
+					</TR>
+					
+					<TR height=30 valign=bottom>
+						<td width="70%" align=left>Can you please tell me your current Energy Provider / Gas Suppiler? </td>
+						<td width="30%" align=left>&nbsp;&nbsp;<INPUT maxLength=50 name=InsuElecSub style="HEIGHT: 22px; WIDTH: 200px" value="<%=InsuElecSub%>" class="IB"> <br>  </td> 
+					</TR>
+					
+					<TR height=30 valign=bottom>
+						<td width="70%" align=left>How much are you spending on your gas bills? </td>
+						<td width="30%" align=left>&nbsp;&nbsp;<INPUT maxLength=50 name=InsuElecSubOth style="HEIGHT: 22px; TEXT-TRANSFORM: uppercase; WIDTH: 90px" value="<%=InsuElecSubOth%>" class="IB"> <br>  </td> 
+					</TR>
+					<TR height=30 valign=center>
+						<TD width="70%" align=left>Do you have a CCJ?</TD>
+						<TD width="30%" align=left>
+						<select name="InsuUtilProv">
+						<option value=""<%if InsuUtilProv="" then Response.Write("Selected")%>></option>
+						<option value="Yes"<%if InsuUtilProv="Yes" then Response.Write("Selected")%>>Yes</option>
+						<option value="No"<%if InsuUtilProv="No" then Response.Write("Selected")%>>No</option>																												
+						</select> 
+						</TD>
+					</TR>
+					<TR height=30 valign=center>
+						<TD width="70%" align=left>Do you have an IVA or any other debt management?</TD>
+						<TD width="30%" align=left>
+						<select name="InsuUtilProvOth">
+						<option value=""<%if InsuUtilProvOth="" then Response.Write("Selected")%>></option>
+						<option value="Yes"<%if InsuUtilProvOth="Yes" then Response.Write("Selected")%>>Yes</option>
+						<option value="No"<%if InsuUtilProvOth="No" then Response.Write("Selected")%>>No</option>																												
+						</select> 
+						</TD>
+					</TR>
+		</Table>
+		</div>
+	  </TD>
+	</TR>
+</TABLE>
+</tr>
+<tr>
+<TABLE align=center cellPadding=0 cellSpacing=0 width="90%" border=0 background="" bordercolor=Black>
+	<TR>
+	  <TD COLSPAN=3><INPUT type="checkbox" name=Ship2 <%if ship2=true then Response.Write("checked")%> ><b>Closing Questions</b><br><br>
+		<DIV id="divShip2" style="position: absolute; VISIBILITY: Hidden">
+		<TABLE align=center cellPadding=0 cellSpacing=0 width="100%" border=1 background="" bordercolor=Black>
+			<TD>
+				<TABLE align=center cellPadding=0 cellSpacing=0 width="90%" border=0 background="">
+					  
+                      
+					  <TR height=30 valign=center>
+						<TD width="80%" align=left>How Many Bedrooms are there in the Property?</TD>
+						<TD width="20%" align=left>&nbsp;
+						<select name="InsuBedRoom">
+						<option <%if InsuBedRoom="" then Response.Write("Selected")%>></option>
+						<option <%if InsuBedRoom="1" then Response.Write("Selected")%>>1</option>
+						<option <%if InsuBedRoom="2" then Response.Write("Selected")%>>2</option>
+						<option <%if InsuBedRoom="3" then Response.Write("Selected")%>>3</option>				<option <%if InsuBedRoom="4" then Response.Write("Selected")%>>4</option>				<option <%if InsuBedRoom="5" then Response.Write("Selected")%>>5</option>				<option <%if InsuBedRoom="6" then Response.Write("Selected")%>>6</option>				</select> 
+						</TD>
+					</TR>
+
+					<TR height=30 valign=center>
+						<TD width="80%" align=left>Would you be interested to have the property insulted</TD>
+						<TD width="20%" align=left>&nbsp;
+						<select name="InsuPInterest">
+						<option <%if InsuPInterest="" then Response.Write("Selected")%>></option>
+						<option <%if InsuPInterest="Yes" then Response.Write("Selected")%>>Yes</option>
+						<option <%if InsuPInterest="No" then Response.Write("Selected")%>>No</option>			</select> 
+						</TD>
+					</TR>
+					
+					
+					<TR height=30 valign=bottom>
+						<td width="80%" align=Right valign=middle>Customer Password : </td>
+						<td width="20%" align=left>&nbsp;&nbsp;<INPUT maxLength=50 name=InsuPwd style="HEIGHT: 22px; TEXT-TRANSFORM: uppercase; WIDTH: 200px" value="<%=InsuPwd%>" class="IB"><br></td>
+					</TR>
+					
+					<TR height=30 valign=center>
+				<TD width="100%" align=left colspan="2">
+                <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber5">
+                <TR height=30 valign=center>
+						<TD width="30%" align=left>Best Time to Call :</TD>
+						<TD width="30%" align=left>&nbsp;
+						<select name="InsuBTCall">
+						<option <%if InsuBTCall="" then Response.Write("Selected")%>></option>
+						<option <%if InsuBTCall="Morning" then Response.Write("Selected")%>>Morning</option>
+						<option <%if InsuBTCall="Afternoon" then Response.Write("Selected")%>>Afternoon</option>
+						<option <%if InsuBTCall="Evening" then Response.Write("Selected")%>>Evening</option>	<option <%if InsuBTCall="Any Time" then Response.Write("Selected")%>>Any Time</option>	</select> </TD>
+
+							<td width="10%" align=left valign=middle>Date : </td>
+							<td width="30%" align=right>&nbsp;&nbsp;<INPUT maxLength=50 name=InsuBTCall1 style="HEIGHT: 22px; TEXT-TRANSFORM: uppercase; WIDTH: 100px" value="<%=InsuBTCall1%>" class="IB">DD/MM/YYYY<br></td>
+
+			</TR>
+			    </table>
+                </TD>
+			        </TR>
+		
+			   </TABLE>
+			</TD>
+			
+		</Table>
+		</div>
+	  </TD>
+	</TR>
+</TABLE>
+<br>
+</tr>
+
+	<p align="center" ><b><font color="#4682B4">___________________________________________________________________</font></b></P>
+	<TABLE align=center cellPadding=5 cellSpacing=0 width="90%" border=0 background="" borderColor=white>
+			
+			
+			<tr>
+			<td ><font color="Green"><b>Make Warm : 1617282229</b></td>
+			<td ><font color="Green"><b>Thermabead : 1905342969</b></td>
+			</tr>
+			
+			<tr>
+			<td ><font color="red"><b>Green Energy Advisor : 1612662134</b></td>
+			<td ><font color="red"><b>Green Energy Advisor 1 : 1612661829</b></td>
+			</tr>
+			
+			<tr>
+			<td ><font color="Green"><b>Green-En Ltd : 2080048989</b></td>
+			<td ><font color="Green"><b>Tempo Doncaster : 1302249515</b></td>
+			</tr>
+			<tr>
+			<td ><font color="red"><b>VHS Boiler : 1246580120 (option 1)</b></td>
+			<td ><font color="red"><b>Snow Down Services : 1244470117 </b></td>
+			</tr>
+
+			<tr>
+			<td ><font color="green"><b>Green Deal Factory :1274214557</b></td>
+			<td ><font color="green"><b>T Vee Energy :1412273969</b></td>
+			</tr>
+            <tr>
+			<td ><font color="red"><b>InterGlow : 1763208563 </b></td>
+			<td ><font color="red"><b>Haigh Energy : 1257424166</b></td>
+			</tr>
+			<tr>
+			<td ><font color="green"><b>GLS Health Home :1617131554</b></td>
+			</tr>
+            	
+			
+					<TR height=40 valign=center>
+						<TD width="60%" align=Right>Client Disposition :</TD>			
+						<TD width="40%" align=left>&nbsp;
+						<select name="disposition" >
+						<option <%if disposition="" then Response.Write("Selected")%>></option>
+						<option <%if disposition="Clubmoor" then Response.Write("Selected")%>>Clubmoor</option>
+						<option <%if disposition="UK Gas Services" then Response.Write("Selected")%>>UK Gas Services</option>
+						<option <%if disposition="Network Energy" then Response.Write("Selected")%>>Network Energy</option>
+						<option <%if disposition="Haigh Energy" then Response.Write("Selected")%>>Haigh Energy</option>
+						<option <%if disposition="GLS - Tempo" then Response.Write("Selected")%>>GLS - Tempo</option>
+						<option <%if disposition="GLS - Health Home" then Response.Write("Selected")%>>GLS - Health Home</option>
+						<option <%if disposition="Makewarm Ltd" then Response.Write("Selected")%>>Makewarm Ltd</option>
+						<option <%if disposition="InterGlow" then Response.Write("Selected")%>>InterGlow</option>
+						<option <%if disposition="Green-En Ltd" then Response.Write("Selected")%>>Green-En Ltd</option>
+						<option <%if disposition="T vee Enegy" then Response.Write("Selected")%>>T vee Enegy</option>
+						<option <%if disposition="VHS Boiler" then Response.Write("Selected")%>>VHS Boiler</option>
+						<option <%if disposition="CDM Energy Services" then Response.Write("Selected")%>>CDM Energy Services</option>
+						<option <%if disposition="CDM Finance Lead" then Response.Write("Selected")%>>CDM Finance Lead</option>
+						<option <%if disposition="GLS - Green Deal Factory" then Response.Write("Selected")%>>GLS - Green Deal Factory</option>
+						<option <%if disposition="Green Deal Factory" then Response.Write("Selected")%>>Green Deal Factory</option>
+						<option <%if disposition="Green Deal Factory HHCRO" then Response.Write("Selected")%>>Green Deal Factory HHCRO</option>
+						<option <%if disposition="GreenHome Insulation" then Response.Write("Selected")%>> GreenHome Insulation</option>
+						<option <%if disposition="Test Campaign" then Response.Write("Selected")%>>Test Campaign</option>
+						<option <%if disposition="Paper Streets" then Response.Write("Selected")%>>Paper Streets</option>
+						<option <%if disposition="Green Energy Advisor" then Response.Write("Selected")%>>Green Energy Advisor </option>
+						<option <%if disposition="Two Red Ltd" then Response.Write("Selected")%>>Two Red Ltd</option>
+						<option <%if disposition="ME Energy Ltd" then Response.Write("Selected")%>>ME Energy Ltd </option>
+						</select>
+						</TD>
+					</TR>
+					
+					<TR height=30 valign=bottom>
+						<td width="80%" align=Right valign=middle>Verifier : </td>
+						<td width="20%" align=left>&nbsp;&nbsp;<INPUT maxLength=50 name=ppiloan type=password style="HEIGHT: 22px; WIDTH: 100px" value="<%=ppiloan%>" class="IB"><br></td>
+					</TR>
+					
+					<TR height=30 valign=bottom>
+						<td width="80%" align=Right valign=middle>Verified By : </td>
+						<TD width="40%" align=left>&nbsp;
+						<select name="verified">
+						<option <%if verified="" then Response.Write("Selected")%>></option>					
+						<option <%if verified="Deepak" then Response.Write("Selected")%>>Deepak</option>	
+						<option <%if verified="Adhnan" then Response.Write("Selected")%>>Adhnan</option>
+						<option <%if verified="Pradeep" then Response.Write("Selected")%>>Pradeep</option>
+						<option <%if verified="Jones" then Response.Write("Selected")%>>Jones</option>
+						<option <%if verified="Customer Hungup" then Response.Write("Selected")%>>Customer Hungup</option>
+						<option <%if verified="Customer in hurry" then Response.Write("Selected")%>>Customer in hurry</option>
+						</select> 
+						</TD>
+					</TR>
+
+					<TR height=30 valign=center>
+						<TD width="60%" align=Right>Type of Insulation Customer Interested?</TD>
+						<TD width="40%" align=left>&nbsp;
+						<select name="InsuInterest" >
+						<option value=""<%if InsuInterest="" then Response.Write("Selected")%>></option>
+						<option value="Loft"<%if InsuInterest="Loft" then Response.Write("Selected")%>>Loft</option>
+						<option value="cavity"<%if InsuInterest="cavity" then Response.Write("Selected")%>>cavity</option>
+						<option value="Boiler"<%if InsuInterest="Boiler" then Response.Write("Selected")%>>Boiler</option>
+						<option value="Loft and Cavity"<%if InsuInterest="Loft and Cavity" then Response.Write("Selected")%>>Loft and Cavity</option>
+						</select> 
+						</TD>
+					</TR>
+
+					<TR height=30 valign=center>
+						<TD width="60%" align=right>Lead Type :</TD>
+						<TD width="40%" align=left>&nbsp;
+						<select name="Location" >
+						<option <%if Location="" then Response.Write("Selected")%>></option>		
+						<option <%if Location="Boiler" then Response.Write("Selected")%>>Boiler</option>
+						<option <%if Location="Lead Qualified" then Response.Write("Selected")%>>Lead Qualified</option>
+						</select> 
+						</TD>
+					</TR>
+
+					<TR height=30 valign=center>
+		                <TD width="60%" align=right>Property has EPC? &nbsp;&nbsp;</TD>
+                		<td width="40%" align=left>
+			            <select name="epc">
+				        <option value=""<%if epc="" then Response.Write("Selected")%>></option>
+				        <option value="Yes"<%if epc="Yes" then Response.Write("Selected")%>>Yes</option>
+				        <option value="No"<%if epc="No" then Response.Write("Selected")%>>No</option>	
+			            </select></td>
+	                </TR>
+       <TR height=30 valign=bottom>
+			<td width="50%" align=Right valign=middle>Threshold Value For the Property </td>
+			<td width="50%" align=left>&nbsp;&nbsp;<INPUT maxLength=50 name=Threshold style="HEIGHT: 22px; TEXT-TRANSFORM: uppercase; WIDTH: 200px" value="<%=Threshold%>" class="IB"><br></td>
+		</TR>
+		
+	   <TR height=30 valign=bottom>
+			<td width="50%" align=Right valign=middle>EPC Recommendation </td>
+			<td width="50%" align=left>&nbsp;&nbsp;<INPUT maxLength=50 name=epc_r style="HEIGHT: 22px; TEXT-TRANSFORM: uppercase; WIDTH: 200px" value="<%=epc_r%>" class="IB"><br></td>
+		</TR>
+		
+	  <TR height=80 bordercolor=lightseagreen valign=center>
+		<TD valign=top align=right width="60%">Remarks : </TD>
+		<TD valign=top align=left width="40%">&nbsp;&nbsp;<TEXTAREA name=Remarks rows=2 style="HEIGHT: 70px; WIDTH: 375px" class="IB"><%=Remarks%></TEXTAREA></TD>
+		<!--<TD valign=top align=right width="60%">Remarks : Only BoilerTest 1. Number of pipes coming from boiler. 2.Does a pipe lead from boiler to outside through the wall. 3.Customer on the land registry/mortgage </TD>
+		<TD valign=top align=left width="40%">&nbsp;&nbsp;<TEXTAREA name=Remarks rows=2 style="HEIGHT: 70px; WIDTH: 375px" class="IB"><%=Remarks%></TEXTAREA></TD>-->
+	  </TR>
+		<%if actype = "QC" then
+			set r1 = Server.CreateObject("ADODB.Recordset")
+			r1.Open "select * from dialer_agent where agent_uid = '"& madeby &"'",con,adOpenDynamic
+			if not r1.eof then%>
+				<TR height=40 valign=center>
+				  <TD width="20%" align=Right nowrap>Sale By : </strong></TD>
+				  <TD width="80%" align=Left>&nbsp;&nbsp;<strong><FONT size=3 face=serif color=Blue><%=r1("agent_uid")%></FONT></strong></TD>
+				</TR>
+			<%end if
+			r1.Close
+		end if%>
+		
+		<TR height=40 valign=center style="display:none">
+			<TD width="60%" align=Right nowrap>Sale Date (EST) : </strong></TD>
+			<TD width="40%" align=left>&nbsp;
+		  		<select name="Sday">
+		  		 <option selected>Day</option>
+		  		   <% for i = 1 to 31
+		  		 	if i = Sday then%>
+		  		 		<option selected><%=Sday%></option>
+		  		 	<%else%>
+		  		 		<option><%=i%></option>
+		  		 	<%end if
+		  		   next%>
+		  		 </select>
+		  		<select name="Smonth">
+		  		<option selected>Month</option>
+		  		  <% for i = 1 to 12
+		  			if i = Smon then%>
+		  				<option selected><%=monthname(Smon)%></option>
+		  			<%else%>
+		  				<option><%=monthname(i)%></option>
+		  			<%end if
+		  		  next%>
+		  		</select>
+		  		<select name="SYear">
+		  		<option selected>Year</option>
+		  		  <% for i = 2006 to 2017
+		  			if i = Syear then%>
+		  				<option selected><%=Syear%></option>
+		  			<%else%>
+		  				<option><%=i%></option>
+		  			<%end if
+		  		  next%>
+		  		</select>
+		  		
+				&nbsp;&nbsp;Time :</strong>&nbsp;&nbsp;
+				<INPUT maxLength=5 name=EstTime style="HEIGHT: 22px; WIDTH: 50px" readonly=true value="<%=EstTime%>" class="IB">
+			</TD>
+		</TR>
+		<%if actype = "QC" or actype = "DEL" or Qremarks <> "" then%>
+			<TR height=80 bordercolor=lightseagreen valign=center>
+				<TD valign=top align=right width="20%">Quality Notes : </TD>
+				<TD valign=top align=left width="80%">&nbsp;&nbsp;<TEXTAREA name=Qremarks rows=2 style="HEIGHT: 70px; WIDTH: 375px" class="IB"><%=Qremarks%></TEXTAREA></TD>
+			</TR>
+		
+		<%end if%>
+		
+		<%if actype = "QC" or actype = "DEL" then
+			set r1 = Server.CreateObject("ADODB.Recordset")
+			r1.Open "select * from dialer_agent where agent_uid = '"& madeby &"'",con,adOpenDynamic
+			if not r1.eof then%>
+			<TR height=30 valign=center>
+				<TD colspan=2 align=left><HR color=Black>&nbsp;&nbsp;<font color=navy size=3><strong>Quality Team Only</strong></font>
+				</TD>
+			</TR>
+			
+			<TR height=20 valign=center>
+				<TD colspan=2 align=left>&nbsp;&nbsp;</TD>
+			</TR>
+			<TR height=20 valign=center>
+				<TD width="60%" align=Right>&nbsp; <Label for="Pending" onclick="vbscript: document.form1.Pending.checked = not (document.form1.Pending.checked)" class="flatwhitelk">Move to Pending</b></label> : </TD>
+				<TD width="40%" align=left>&nbsp;<INPUT type="checkbox" name=Pending <%if Pending=True then Response.Write("checked")%>></TD>
+			</TR>
+			<%end if
+			r1.Close%>
+		<%end if%>
+		 <TR height=10 valign=center>
+		<TD colspan=2 align=left>&nbsp;&nbsp;</TD>
+	  </TR>
+	  <TR height=10 valign=center>
+		<TD colspan=2 align=left>&nbsp;&nbsp;</TD>
+	  </TR>
+		
+	</TABLE>
+	<br><br><br>
+	<P align="center">
+	    <input type="hidden" name="status" value="1">
+	    <% if Request.QueryString("type") = "QC" then%>
+	        <!--<input type="button" name="Submitform" value="Approve" onclick="javascript:valid()" class="butn">-->
+	        <input type="button" name="Submitform" value="Approve" onclick="vbscript:ValidateEmployee" class="butn">
+			<!--<input type="button" name="Submitform" value="Approve" onclick="javascript:verifi()" class="butn">-->
+			
+	    <%elseif Request.QueryString("type") = "DEL" then%>
+			<!--<input type="button" name="Submitform" value="Delete" onclick="javascript:valid() class="butn">-->
+			<input type="button" name="Submitform" value="Delete" onclick="vbscript:ValidateEmployee" class="butn">
+			<!--<input type="button" name="Submitform" value="Delete" onclick="javascript:verifi() class="butn">-->
+	    <%else
+	    If SaleRec <> True then%>
+			<!--<input type="button" name="Submitform" value="Submit" onclick="javascript:valid() class="butn">-->
+			<input type="button" name="Submitform" value="Submit" onclick="vbscript:ValidateEmployee" class="butn">
+			<!--<input type="button" name="Submitform" value="Submit" onclick="javascript:verifi() class="butn">-->
+	    <%end if%>
+	    <%end if%>
+	    
+	    &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="button" name="Back" value="Cancel" onclick="vbscript:window.history.back" class="butn">
+	</P>
+	<table width="100%" height=50><tr><td>&nbsp;</td></tr></table>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class=footer>
+	  <tr> 
+	    <td align="left" valign="middle" height="22" ><font face="Geneva, Arial, Helvetica, san-serif" size="1" color="#FFFFFF"><font face="Verdana, Arial, Helvetica, sans-serif">
+	    </font></td>
+	  </tr>
+	</table>
+</form>
+</BODY>
+</HTML>
+<%elseif Request.Form("status")="1" then
+	set rs = Server.CreateObject("ADODB.Recordset")
+	set rstemp = Server.CreateObject("ADODB.Recordset")
+	agent_uid = Request.form("agent_uid")
+	CustId = trim(Request.form("CustId"))
+	RedString = ""
+	if Request.Form("actype") = "DEL" then
+		mess = "The Details for the Customer <FONT size=4 color=Navy>" & CustId & "</FONT> was Deleted Successfully"
+		rs.Open "Update Insu set Deleted = 1, check_by = '" & session("agentid") & "' where CustId='"& CustId &"'", con, 2,2
+		RedString = "DGIInsulationQc.asp?mess= " & mess
+	else
+		if CustId = "" then
+			'rstemp.Open "select max(right(CustId,6))+1 NewCustId from Insu",con,2,2
+			'if isnull(rstemp(0)) or rstemp(0) = "" then
+			'	CustId = "Insu000001"
+			'else
+			'	CustId = "Insu" & right("000000" & rstemp(0),6)
+			'end if
+			'rstemp.Close
+
+			rs.Open "select * from Insu", con, 2,2
+			rs.AddNew
+			rs("Made_by") = session("agentid")
+			'rs("CustId") = CustId
+			mess = "The Record Id for the Customer <FONT size=4 color=Navy>" & ucase(rs("FName") & " " & rs("LName")) & "</FONT> is <FONT size=5 color=Black>" & rs("CustId") & "</font>"
+		else
+			rs.Open "select * from Insu where CustId='"& CustId &"'", con, 2,2
+			mess = "The Details for the Customer <FONT size=4 color=Navy>" & rs("CustId")  & "</FONT> was Updated Successfully"
+		end if
+		rs("Title") = Request.Form("Title")
+		rs("FName") = ucase(Request.Form("Fname"))
+		rs("MName") = ucase(Request.Form("Mname"))
+		rs("LName") = ucase(Request.Form("Lname"))
+		rs("hPhone") = Request.Form("hPhone")
+		rs("AhPhone") = Request.Form("AhPhone")
+		rs("mobile") = Request.Form("mobile")
+		rs("CusEmail") = Request.Form("CusEmail")
+		rs("Address1") = ucase(Request.Form("Address1"))
+		rs("Address2") = ucase(Request.Form("Address2"))
+		rs("Address3") = ucase(Request.Form("Address3"))
+		rs("City") = ucase(Request.Form("City"))
+		rs("State") = ucase(Request.Form("State"))
+		rs("Zip") = ucase(Request.Form("Zip"))
+		rs("ZipArea") = ucase(Request.Form("ZipArea"))
+		rs("ZipAreaN") = ucase(Request.Form("ZipAreaN"))
+		rs("LeadID") = ucase(Request.Form("LeadID"))
+		rs("SupplierBatchNo") = ucase(Request.Form("SupplierBatchNo"))
+		rs("BT_YoN") = ""
+		
+		rs("CavityWalls") = Request.Form("CavityWalls")
+		'rs("Insutenyrs") = Request.Form("Insutenyrs")
+		rs("InsuJoist") = Request.Form("InsuJoist")
+				
+		if Request.Form("shipto") = "on" then
+			rs("shipto") = 1
+			rs("OwnProper") = Request.Form("OwnProper")
+			rs("Tenure") = Request.Form("Tenure")
+			rs("InsuInterest") = Request.Form("InsuInterest")
+			rs("InsuProp") = Request.Form("InsuProp")
+			rs("InsuPropBuilt") = Request.Form("InsuPropBuilt")
+			rs("InsuCustAllow") = Request.Form("InsuCustAllow")
+			rs("InsuBenefits") = Request.Form("InsuBenefits")
+			rs("InsuBenefits2") = Request.Form("InsuBenefits2")
+			rs("InsuBenefits3") = Request.Form("InsuBenefits3")
+			'rs("InsuHomeIncome") = Request.Form("InsuHomeIncome")
+			rs("Insucert") = Request.Form("Insucert")
+			rs("InsuAgeProof") = Request.Form("InsuAgeProof")
+			rs("cust_dob") = Request.Form("cust_dob")
+			rs("InsuUtilBill") = Request.Form("InsuUtilBill")
+			rs("stonew") = Request.Form("stonew")
+			rs("CDigNews1") = Request.Form("CDigNews1")
+			rs("CDigNews2") = Request.Form("CDigNews2")
+			rs("CDigNews3") = Request.Form("CDigNews3")
+			rs("CDigNews4") = Request.Form("CDigNews4")
+			rs("CDigNews5") = Request.Form("CDigNews5")			
+			rs("boiler_Type") = Request.Form("boiler_Type")
+			rs("boiler_life") = Request.Form("boiler_life")
+			rs("boiler_replace") = Request.Form("boiler_replace")
+			''rs("InsuGas") = Request.Form("InsuGas")
+			rs("InsuUtilProv") = Request.Form("InsuUtilProv")
+			rs("InsuUtilProvOth") = Request.Form("InsuUtilProvOth")
+			rs("InsuElecSub") = Request.Form("InsuElecSub")
+			rs("InsuElecSub1") = Request.Form("InsuElecSub1")
+			rs("InsuElecSubOth") = Request.Form("InsuElecSubOth")
+			
+			rs("Boiler_make_model") = Request.Form("Boiler_make_model")
+			rs("boiler_breakdown_policy") = Request.Form("boiler_breakdown_policy")
+			rs("B_emp_unemp") = Request.Form("B_emp_unemp")
+			rs("Boiler_fault") = Request.Form("Boiler_fault")
+		else
+			rs("shipto") = 0
+			rs("OwnProper") = ""
+			rs("Tenure")= ""
+			rs("InsuInterest") = ""
+			rs("InsuProp") = ""
+			rs("InsuPropBuilt") = ""
+			rs("InsuCustAllow") = ""
+			rs("InsuBenefits") = ""
+			rs("InsuBenefits2") = ""
+			rs("InsuBenefits3") = ""
+			'rs("InsuHomeIncome") = ""
+			rs("Insucert") = ""
+			rs("InsuAgeProof") = ""
+			rs("cust_dob") = ""
+			rs("InsuUtilBill") = ""
+			rs("stonew") = ""
+			rs("CDigNews1") = ""
+			rs("CDigNews2") = ""
+			rs("CDigNews3") = ""
+			rs("CDigNews4") = ""
+			rs("CDigNews5") = ""
+			rs("boiler_Type") = ""
+			rs("boiler_life") = ""
+			rs("boiler_replace") = ""
+			''rs("InsuGas") = ""
+			rs("InsuUtilProv") = ""
+			rs("InsuUtilProvOth") = ""
+			rs("InsuElecSub") = ""
+			rs("InsuElecSub1") = ""
+			rs("InsuElecSubOth") = ""
+			rs("Boiler_make_model") = ""
+			rs("boiler_breakdown_policy") = ""
+			rs("B_emp_unemp") = ""
+			rs("Boiler_fault") = ""
+			
+		end if
+		
+		if Request.Form("ship3") = "on" then
+		    rs("ship3") = 1
+			rs("InsuLoftTen") = Request.Form("InsuLoftTen")
+			rs("InsuDeep") = Request.Form("InsuDeep")
+			rs("InsuLoftBoard") = Request.Form("InsuLoftBoard")
+			rs("InsuLoftBoard1") = Request.Form("InsuLoftBoard1")
+			rs("InsuLoftEmp") = Request.Form("InsuLoftEmp")	
+			rs("InsuLoftEmp1") = Request.Form("InsuLoftEmp1")	
+			rs("InsuWorkLoft") = Request.Form("InsuWorkLoft")	
+			rs("InsuLoftConv") = Request.Form("InsuLoftConv")
+			'rs("InsuRInfo") = Request.Form("InsuRInfo")		
+		else
+		    rs("ship3") = 0
+			rs("InsuLoftTen") = ""
+			rs("InsuDeep") = ""
+			rs("InsuLoftBoard") = ""
+			rs("InsuLoftBoard1") = ""
+			rs("InsuLoftEmp") = ""
+			rs("InsuLoftEmp1") = ""
+			rs("InsuWorkLoft") = ""
+			rs("InsuLoftConv") = ""
+			'rs("InsuRInfo") = ""
+		end if		
+		
+		if Request.Form("ship1") = "on" then
+			rs("ship1") = 1
+			rs("Cavity_problem") = Request.Form("Cavity_problem")
+			rs("InsuBuiltYear") = Request.Form("InsuBuiltYear")
+			rs("InsuBuiltBefo") = Request.Form("InsuBuiltBefo")
+			rs("InsuHaveCavity") = Request.Form("InsuHaveCavity")
+			rs("InsuTimFra") = Request.Form("InsuTimFra")
+			rs("InsuTileCla") = Request.Form("InsuTileCla")
+			rs("InsuDampWall") = Request.Form("InsuDampWall")
+		else
+			rs("ship1") = 0
+			rs("Cavity_problem") = ""
+			rs("InsuBuiltYear") = ""
+			rs("InsuBuiltBefo") = ""
+			rs("InsuHaveCavity") = ""
+			rs("InsuTimFra") = ""
+			rs("InsuTileCla") = ""
+			rs("InsuDampWall") = ""
+		end if
+		
+		if Request.Form("ship2") = "on" then
+			rs("ship2") = 1
+			''rs("CProducts1") = Request.Form("CProducts1")
+			''rs("CProducts2") = Request.Form("CProducts2")
+			rs("InsuBedRoom") = Request.Form("InsuBedRoom")
+			''rs("InsuBedRoom1") = Request.Form("InsuBedRoom1")
+			rs("InsuPrice") = Request.Form("InsuPrice")
+			rs("InsuPInterest") = Request.Form("InsuPInterest")			
+			'rs("InsuShower") = Request.Form("InsuShower")
+			rs("InsuPwd") = Request.Form("InsuPwd")	
+			rs("InsuBTCall") = Request.Form("InsuBTCall")
+			rs("InsuBTCall1") = Request.Form("InsuBTCall1")
+			if isdate(Request.Form("cmonth2")& "/" & Request.Form("cday2") & "/" & Request.Form("cYear2")) then
+				rs("Demo2") = cdate(Request.Form("cmonth2")& "/" & Request.Form("cday2") & "/" & Request.Form("cYear2"))
+			else
+				rs("Demo2") = null
+			end if		
+			rs("CTime2") = Request.Form("CTime2")					
+		else
+			rs("ship2") = 0
+			''rs("CProducts1") = ""
+			''rs("CProducts2") = ""
+			rs("InsuBedRoom") = ""
+			''rs("InsuBedRoom1") = ""
+			rs("InsuPrice") = ""
+			rs("InsuPInterest") = ""
+			'rs("InsuShower") = ""
+			rs("InsuPwd") = ""
+			rs("InsuBTCall") = ""
+			rs("InsuBTCall1") =""			
+			rs("Demo2") = null
+			rs("CTime2") = null
+		end if
+		
+		if Request.Form("Pending") = "on" then
+			rs("Pending") = 1
+		else
+			rs("Pending") = 0
+			rs("Check_by") = null
+		end if
+		
+		if Request.Form("actype") = "QC" then 
+			rs("Check_by") = session("agentid")
+			mess = "The Customer <FONT size=4 color=Navy>" & rs("CustId")  & "</FONT> was Approved Successfully"
+			RedString = "Insulation2013Qc.asp?mess= " & mess
+		else
+			RedString = "InsulationList.asp?mess= " & mess
+		end if
+			if isdate(Request.Form("smonth")& "/" & Request.Form("sday") & "/" & Request.Form("sYear")) then
+			if isdate(Request.Form("smonth")& "/" & Request.Form("sday") & "/" & Request.Form("sYear") ) then
+				rs("Made_at") = cdate(Request.Form("smonth")& "/" & Request.Form("sday") & "/" & Request.Form("sYear"))
+			else
+				rs("Made_at") = cdate(Request.Form("smonth")& "/" & Request.Form("sday") & "/" & Request.Form("sYear"))
+			end if
+			rs("EstTime") = Request.Form("EstTime") 
+		end if
+		rs("disposition") = Request.Form("disposition")	
+		rs("ppiloan") = Request.Form("ppiloan")	
+		rs("Location") = Request.Form("Location")	
+		rs("epc") = Request.Form("epc")
+		rs("epc_r") = Request.Form("epc_r")
+		rs("Threshold") = Request.Form("Threshold")
+		
+		rs("Verified") = Request.Form("Verified")																
+		rs("remarks") = trim(Request.Form("remarks"))
+		'rs("SpeciTime") = trim(Request.Form("SpeciTime"))		
+		rs("Qremarks") = trim(Request.Form("Qremarks"))
+		rs("deleted") = 0
+		rs.Update
+		rs.Close
+	end if
+	Response.Redirect(RedString)
+end if%>
